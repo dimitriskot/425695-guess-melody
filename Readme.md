@@ -1,7 +1,7 @@
 # Личный проект «Угадай мелодию» [![Build status][travis-image]][travis-url]
 
 * Студент: [Дмитрий Котов](https://up.htmlacademy.ru/ecmascript/6/user/425695).
-* Наставник: [Александр Быков].
+* Наставник: [Александр Быков](https://htmlacademy.ru/profile/id7107).
 
 ---
 
