@@ -52,9 +52,19 @@ const arrowsContainer = document.createElement(`div`);
 arrowsContainer.classList.add(`arrows__wrap`);
 
 const styleContainer = document.createElement(`style`);
-const arrowsWrapStyle = `.arrows__wrap { position: absolute; top: 135px; left: 50%; margin-left: -56px;}`;
-const arrowsStyleBtn = `.arrows__btn { background: none; color: #fff; border: 2px solid black; padding: 5px 20px;}`;
-styleContainer.innerText = `${arrowsWrapStyle} ${arrowsStyleBtn}`;
+const arrowsWrapStyle = `.arrows__wrap {
+ position: absolute; 
+ top: 135px; 
+ left: 50%; 
+ margin-left: -56px;
+}`;
+const arrowsStyleBtn = `.arrows__btn { 
+ background: none; 
+ color: #fff; 
+ border: 2px solid black; 
+ padding: 5px 20px;
+}`;
+styleContainer.innerText = `${arrowsWrapStyle}\n${arrowsStyleBtn}`;
 
 const arrowButton = document.createElement(`button`);
 arrowButton.classList.add(`arrows__btn`);
