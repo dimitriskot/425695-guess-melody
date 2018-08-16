@@ -4,6 +4,11 @@ import {resultSuccess} from "./result-success";
 import {failTime} from "./fail-time";
 import {failTries} from "./fail-tries";
 
+const OUT_OF_THREE = {
+  ONE: 0.3,
+  TWO: 0.6
+};
+
 const classNames = [`game`, `game--artist`];
 const markUp = `<header class="game__header">
 <a class="game__back" href="#">
@@ -68,13 +73,13 @@ const answerInputs = Array.from(gameArtist.querySelectorAll(`.artist`));
 
 const getRandomResultsPage = () => {
   const randomNumber = Math.random();
-  if (randomNumber < 0.3) {
+  if (randomNumber < OUT_OF_THREE.ONE) {
     selectTemplate(resultSuccess);
   }
-  if (randomNumber >= 0.3 && randomNumber < 0.6) {
+  if (randomNumber >= OUT_OF_THREE.ONE && randomNumber < OUT_OF_THREE.TWO) {
     selectTemplate(failTime);
   }
-  if (randomNumber > 0.6) {
+  if (randomNumber > OUT_OF_THREE.TWO) {
     selectTemplate(failTries);
   }
 };

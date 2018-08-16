@@ -90,8 +90,7 @@ const answers = Array.from(gameGenre.querySelectorAll(`.game__answer > .game__in
 const toggleSubmitButtonDisabled = (answer, answersCollection) => {
   if (answer.checked) {
     gameSubmitButton.disabled = false;
-  } else
-  if (!answersCollection.some((el) => el.checked)) {
+  } else if (!answersCollection.some((el) => el.checked)) {
     gameSubmitButton.disabled = true;
   }
 };
