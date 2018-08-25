@@ -1,6 +1,13 @@
-import {getDom, selectTemplate} from "./util";
-import {welcome} from "./welcome";
-import {gameArtist} from "./game-artist";
+import {
+  getDom,
+  selectTemplate
+} from "./util";
+import {
+  welcome
+} from "./welcome";
+import {
+  gameArtist
+} from "./game-artist";
 
 const classNames = [`game`, `game--genre`];
 const markUp = `<header class="game__header">
@@ -115,4 +122,6 @@ const leavePage = (e) => {
 gameBack.addEventListener(`click`, leavePage);
 gameSubmitButton.addEventListener(`click`, leavePage);
 
-export {gameGenre};
+export {
+  gameGenre
+};

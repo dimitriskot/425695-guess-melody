@@ -1,5 +1,6 @@
 import {getDom, selectTemplate} from "./util";
 import {gameGenre} from "./game-genre";
+// import {getRandomResults} from "./random-results";
 
 const classNames = [`welcome`];
 const markUp = `<div class="welcome__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
@@ -17,3 +18,5 @@ const startGameButton = welcome.querySelector(`.welcome__button`);
 startGameButton.addEventListener(`click`, () => selectTemplate(gameGenre));
 
 export {welcome};
+
+// console.log(getRandomResults());
