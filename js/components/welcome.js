@@ -1,6 +1,9 @@
 import {getDom, selectTemplate} from "./util";
 import {gameGenre} from "./game-genre";
-// import {getRandomResults} from "./random-results";
+// import {getRandomResults} from "../game-logic/random-results";
+// import {results} from "../data/results";
+// import {statistics} from "../data/statistics";
+// import {getPlayerResults} from "../game-logic/player-results";
 
 const classNames = [`welcome`];
 const markUp = `<div class="welcome__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
@@ -20,3 +23,4 @@ startGameButton.addEventListener(`click`, () => selectTemplate(gameGenre));
 export {welcome};
 
 // console.log(getRandomResults());
+// console.log(getPlayerResults(statistics[2], results[1]));

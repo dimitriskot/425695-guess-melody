@@ -30,7 +30,7 @@
 //       break;
 //     }
 //     const answerItem = {
-//       succsess: true,
+//       succsess: getRandomAnswerSuccess(),
 //       time: answerTime
 //     };
 //     answersCollection.push(answerItem);
