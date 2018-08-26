@@ -4,6 +4,7 @@ import {gameGenre} from "./game-genre";
 // import {results} from "../data/results";
 // import {statistics} from "../data/statistics";
 // import {getPlayerResults} from "../game-logic/player-results";
+// import {getPlayerLives} from "../game-logic/player-lives";
 
 const classNames = [`welcome`];
 const markUp = `<div class="welcome__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
@@ -24,3 +25,5 @@ export {welcome};
 
 // console.log(getRandomResults());
 // console.log(getPlayerResults(statistics[2], results[1]));
+// console.log(getPlayerLives(results[6].leftNotes, results[6].answers[4].succsess));
+// console.log(getPlayerLives(results[7].leftNotes, results[7].answers[4].succsess));
