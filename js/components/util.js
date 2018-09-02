@@ -1,5 +1,5 @@
-export const getDom = (markUp, classNames) => {
-  const domElement = document.createElement(`section`);
+export const getDom = (markUp, classNames = []) => {
+  const domElement = document.createElement(`div`);
   domElement.innerHTML = markUp;
   classNames.forEach((className) => domElement.classList.add(className));
   return domElement;

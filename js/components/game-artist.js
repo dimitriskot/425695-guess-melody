@@ -1,8 +1,8 @@
 import {getDom, selectTemplate} from "./util";
 import {welcome} from "./welcome";
-import {resultSuccess} from "./result-success";
-import {failTime} from "./fail-time";
-import {failTries} from "./fail-tries";
+import resultSuccess from "./result-success";
+import failTime from "./fail-time";
+import failTries from "./fail-tries";
 
 const OUT_OF_THREE = {
   ONE: 0.3,
