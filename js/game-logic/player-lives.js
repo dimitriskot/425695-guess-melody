@@ -1,4 +1,4 @@
-export const getPlayerLives = (leftLives, answerSuccess) => {
+const getPlayerLives = (leftLives, answerSuccess) => {
   if (leftLives === 0) {
     throw new Error(`ERROR! There is no more lives`);
   }
@@ -8,3 +8,5 @@ export const getPlayerLives = (leftLives, answerSuccess) => {
   const newLivesCount = leftLives - 1;
   return newLivesCount;
 };
+
+export default getPlayerLives;

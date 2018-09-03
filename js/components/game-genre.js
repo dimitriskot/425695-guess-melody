@@ -1,9 +1,10 @@
 import {getDom, selectTemplate} from "./util";
 import {welcome} from "./welcome";
-import {gameArtist} from "./game-artist";
+import gameArtist from "./game-artist";
 import {levels} from "../data/levels";
 import getHeader from "./common/header";
 import {getGenreContent} from "./game/genre/genreContent";
+import getPlayerLives from "../game-logic/player-lives";
 
 const gameGenre = (state) => {
   const header = getDom(getHeader(state));
@@ -17,10 +18,9 @@ const gameGenre = (state) => {
 
   const gameSubmitButton = genreLevel.querySelector(`.game__submit`);
   const gameBack = genreLevel.querySelector(`.game__back`);
+  const answers = Array.from(genreLevel.querySelectorAll(`.game__answer > .game__input`));
 
   gameSubmitButton.disabled = true;
-
-  const answers = Array.from(genreLevel.querySelectorAll(`.game__answer > .game__input`));
 
   const toggleSubmitButtonDisabled = (answer, answersCollection) => {
     if (answer.checked) {
@@ -34,9 +34,21 @@ const gameGenre = (state) => {
     answer.addEventListener(`change`, () => toggleSubmitButtonDisabled(answer, answersCollection));
   });
 
-  const submitAnswer = (e) => {
+  const submitAnswer = (e, game, levelAnswer) => {
     e.preventDefault();
-    answers.forEach((answer) => console.log(answer.value, answer.checked));
+    const rightAnswers = answers.filter((answer) => answer.value === levelAnswer);
+    const userAnswers = answers.filter((answer) => answer.checked === true);
+    const isSuccess = userAnswers.every((answer, i, usAnswers) => answer.value === levelAnswer && usAnswers.length === rightAnswers.length);
+    const answerData = Object.assign({}, game.answerTemplate);
+    answerData.success = isSuccess;
+    answerData.time = 30000;
+    const newGame = Object.assign({}, game);
+    newGame.answers.push(answerData);
+    newGame.lives = getPlayerLives(game.lives, isSuccess);
+    newGame.levelsCount = isSuccess ? newGame.levelsCount - 1 : newGame.levelsCount;
+    newGame.level = `artist`;
+    // console.log(newGame);
+    selectTemplate(gameArtist(newGame));
   };
 
   const leavePage = (e) => {
@@ -53,7 +65,7 @@ const gameGenre = (state) => {
   };
 
   gameBack.addEventListener(`click`, leavePage);
-  gameSubmitButton.addEventListener(`click`, submitAnswer);
+  gameSubmitButton.addEventListener(`click`, (e) => submitAnswer(e, state, levels[state.level].answer));
 
   return genreLevel;
 };
