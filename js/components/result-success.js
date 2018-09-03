@@ -1,7 +1,10 @@
 import {getDom, selectTemplate} from "./util";
 import gameGenre from "./game-genre";
+import initialState from "../data/initial-state";
+import getScoreCount from "../game-logic/score-count";
 
-const resultSuccess = () => {
+const resultSuccess = (game) => {
+  console.log(getScoreCount(game.answers, game.lives));
   const classNames = [`result`];
   const markUp = `<div class="result__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
 	<h2 class="result__title">Вы настоящий меломан!</h2>
@@ -11,8 +14,7 @@ const resultSuccess = () => {
 
   const resultLevel = getDom(markUp, classNames);
   const replayButton = resultLevel.querySelector(`.result__replay`);
-  const genreLevel = gameGenre();
-  console.log(genreLevel);
+  const genreLevel = gameGenre(initialState);
   replayButton.addEventListener(`click`, () => selectTemplate(genreLevel));
   return resultLevel;
 };

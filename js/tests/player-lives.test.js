@@ -4,9 +4,7 @@ import {
 import {
   results
 } from "../data/results";
-import {
-  getPlayerLives
-} from "../game-logic/player-lives";
+import getPlayerLives from "../game-logic/player-lives";
 
 describe(`Counting player's lives left`, () => {
   it(`wrong answers become: 0, lives left: 3. sholud return lives left: 3`, () => {

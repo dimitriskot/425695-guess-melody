@@ -1,6 +1,6 @@
 import {assert} from "chai";
 import {results} from "../data/results";
-import {getScoreCount} from "../game-logic/score-count";
+import getScoreCount from "../game-logic/score-count";
 
 describe(`Counting player's game score`, () => {
   it(`right answers: 10, of them fast answers: 0, wrong answers: 0, notes left: 3. sholud return score: 10`, () => {

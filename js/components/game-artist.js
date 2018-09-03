@@ -1,9 +1,9 @@
 import {getDom, selectTemplate} from "./util";
 import {welcome} from "./welcome";
 import gameGenre from "./game-genre";
-// import resultSuccess from "./result-success";
+import resultSuccess from "./result-success";
 // import failTime from "./fail-time";
-// import failTries from "./fail-tries";
+import failTries from "./fail-tries";
 import getHeader from "./common/header";
 import {getArtistContent} from "./game/artist/artistContent";
 import {levels} from "../data/levels";
@@ -31,7 +31,15 @@ const gameArtist = (state) => {
     const newGame = Object.assign({}, game);
     newGame.answers.push(answerData);
     newGame.lives = getPlayerLives(game.lives, isSuccess);
+    if (newGame.lives === 0) {
+      selectTemplate(failTries());
+      return;
+    }
     newGame.levelsCount = isSuccess ? newGame.levelsCount - 1 : newGame.levelsCount;
+    if (newGame.levelsCount === 0) {
+      selectTemplate(resultSuccess(newGame));
+      return;
+    }
     newGame.level = `genre`;
     // console.log(newGame);
     selectTemplate(gameGenre(newGame));

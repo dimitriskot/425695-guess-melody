@@ -5,6 +5,8 @@ import {levels} from "../data/levels";
 import getHeader from "./common/header";
 import {getGenreContent} from "./game/genre/genreContent";
 import getPlayerLives from "../game-logic/player-lives";
+import failTries from "./fail-tries";
+import resultSuccess from "./result-success";
 
 const gameGenre = (state) => {
   const header = getDom(getHeader(state));
@@ -45,7 +47,15 @@ const gameGenre = (state) => {
     const newGame = Object.assign({}, game);
     newGame.answers.push(answerData);
     newGame.lives = getPlayerLives(game.lives, isSuccess);
+    if (newGame.lives === 0) {
+      selectTemplate(failTries());
+      return;
+    }
     newGame.levelsCount = isSuccess ? newGame.levelsCount - 1 : newGame.levelsCount;
+    if (newGame.levelsCount === 0) {
+      selectTemplate(resultSuccess(newGame));
+      return;
+    }
     newGame.level = `artist`;
     // console.log(newGame);
     selectTemplate(gameArtist(newGame));

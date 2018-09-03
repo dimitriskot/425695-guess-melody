@@ -3,6 +3,7 @@ import {
   selectTemplate
 } from "./util";
 import gameGenre from "./game-genre";
+import initialState from "../data/initial-state";
 
 const failTries = () => {
   const classNames = [`result`];
@@ -13,7 +14,7 @@ const failTries = () => {
 
   const fail = getDom(markUp, classNames);
   const replayButton = fail.querySelector(`.result__replay`);
-  const genreLevel = gameGenre();
+  const genreLevel = gameGenre(initialState);
   replayButton.addEventListener(`click`, () => selectTemplate(genreLevel));
 
   return fail;

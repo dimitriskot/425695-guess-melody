@@ -5,14 +5,20 @@ const GRADE = 1;
 const BONUS_GRADE = 2;
 const FAIL_GRADE = 2;
 
-export const getScoreCount = (results, leftNotes) => {
+const getScoreCount = (results, leftNotes) => {
   const gradesForAnswers = results
   .map((answer) => {
     let gradesForAnswer = 0;
-    if (answer.succsess && answer.time >= FAST_RIGHT_ANSWER_TIME) {
+    if (answer.success && answer.time >= FAST_RIGHT_ANSWER_TIME) {
       gradesForAnswer = GRADE;
     }
-    if (answer.succsess && answer.time < FAST_RIGHT_ANSWER_TIME) {
+    return gradesForAnswer;
+  })
+  .reduce((a, b) => a + b);
+  const gradesForFastAnswers = results
+  .map((answer) => {
+    let gradesForAnswer = 0;
+    if (answer.success && answer.time < FAST_RIGHT_ANSWER_TIME) {
       gradesForAnswer = BONUS_GRADE;
     }
     return gradesForAnswer;
@@ -20,6 +26,9 @@ export const getScoreCount = (results, leftNotes) => {
   .reduce((a, b) => a + b);
   const fails = LIVES - leftNotes;
   const gradesForFails = fails * FAIL_GRADE;
-  const score = gradesForFails ? -1 : gradesForAnswers;
+  const grades = gradesForAnswers + gradesForFastAnswers;
+  const score = gradesForFails ? -1 : grades;
   return score;
 };
+
+export default getScoreCount;

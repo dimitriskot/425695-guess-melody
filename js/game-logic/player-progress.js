@@ -1,6 +1,4 @@
-import {
-  getScoreCount
-} from "./score-count";
+import getScoreCount from "./score-count";
 
 export const getPlayerProgress = (results) => {
   const score = getScoreCount(results.answers, results.leftNotes);
