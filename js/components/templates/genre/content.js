@@ -1,7 +1,7 @@
 import {getGenreAnswer} from "./answer";
 
 export const getGenreContent = (level) => {
-  const answerList = level.tracks.map((track, i) => getGenreAnswer(track, i + 1)).join(``);
+  const answerList = level.tracks.map((track, i) => getGenreAnswer(track, i)).join(``);
   return `<section class="game__screen">
     <h2 class="game__title">${level.title}</h2>
     <form class="game__tracks">

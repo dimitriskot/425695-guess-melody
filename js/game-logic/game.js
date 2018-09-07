@@ -1,21 +1,19 @@
 import welcome from '../components/welcome';
 import gameGenre from '../components/game-genre';
 import gameArtist from '../components/game-artist';
-import {getDom, selectTemplate} from '../components/util';
-import {initialState, currentGame} from '../data/initial-game';
-import {levels, getLevelData} from "../data/levels";
+import {selectTemplate} from '../components/util';
+// import {initialState, currentGame} from '../data/initial-game';
+import {getLevelData} from "../data/levels";
 // import {levelChange} from "./level-change";
-import getHeader from "../components/templates/header";
+// import getHeader from "../components/templates/header";
 import resultSuccess from '../components/result-success';
-import getPlayerResults from './player-results';
+// import getPlayerResults from './player-results';
 // import timer from './timer';
 // import getPoints from './score-count';
 // import calculateLives from './player-lives';
 
-const container = document.querySelector(`.app`);
-
-export const renderGame = (game) => {
-
+export const playGame = (game) => {
+  console.log(game);
   // const startTime = new Date().valueOf();
   const levelData = getLevelData(game.level);
   const renderLevel = levelData.type === `tracks` ? gameGenre : gameArtist;
@@ -28,14 +26,13 @@ export const renderGame = (game) => {
   //   return listTemplates;
   // };
 
-  container.innerHTML = ``;
-  if (game.level < levels.length - 1) {
+  if (game.levelsCount > 0) {
     // const templateData = Object.assign({}, levelData);
-    container.appendChild(getDom(getHeader(currentGame)));
-    container.appendChild(renderLevel(levelData));
+    selectTemplate(renderLevel(game, levelData));
   } else {
-    container.appendChild(getDom(resultSuccess(getPlayerResults([], currentGame))));
-    currentGame.level = initialState.level;
+    selectTemplate(resultSuccess(game));
+    // container.appendChild(getDom(resultSuccess(getPlayerResults([], currentGame))));
+    // currentGame.level = initialState.level;
   }
 
   // const checkAnswer = () => {
@@ -134,10 +131,10 @@ export const renderGame = (game) => {
   //   });
   // }
 
-  const restartButton = document.querySelector(`.result__replay`);
-  if (restartButton) {
-    restartButton.addEventListener(`click`, () => {
-      selectTemplate(welcome);
-    });
-  }
+  // const restartButton = document.querySelector(`.result__replay`);
+  // if (restartButton) {
+  //   restartButton.addEventListener(`click`, () => {
+  //     selectTemplate(welcome);
+  //   });
+  // }
 };

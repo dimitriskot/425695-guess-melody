@@ -1,4 +1,4 @@
-export const levelChange = (game, level) => {
+const levelChange = (game, level) => {
   if (typeof level !== `number`) {
     throw new Error(`Level argument must be a number`);
   }
@@ -10,3 +10,5 @@ export const levelChange = (game, level) => {
   });
   return newGame;
 };
+
+export default levelChange;

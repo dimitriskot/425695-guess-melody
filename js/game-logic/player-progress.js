@@ -1,12 +1,12 @@
 import getScoreCount from "./score-count";
 
-export const getPlayerProgress = (results) => {
-  const score = getScoreCount(results.answers, results.leftNotes);
-  const leftNotes = results.leftNotes;
-  const leftTime = results.leftTime;
+export const getPlayerProgress = (game) => {
+  const score = getScoreCount(game);
+  const lives = game.lives;
+  const time = game.time;
   return {
     score,
-    leftNotes,
-    leftTime
+    lives,
+    time
   };
 };

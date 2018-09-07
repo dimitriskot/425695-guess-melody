@@ -1,9 +1,6 @@
-import {
-  getDom,
-  selectTemplate
-} from "./util";
-import gameGenre from "./game-genre";
-import initialState from "../data/initial-state";
+import {getDom} from "./util";
+import {currentGame} from "../data/initial-game";
+import {playGame} from '../game-logic/game';
 
 const failTries = () => {
   const classNames = [`result`];
@@ -14,8 +11,7 @@ const failTries = () => {
 
   const fail = getDom(markUp, classNames);
   const replayButton = fail.querySelector(`.result__replay`);
-  const genreLevel = gameGenre(initialState);
-  replayButton.addEventListener(`click`, () => selectTemplate(genreLevel));
+  replayButton.addEventListener(`click`, () => playGame(currentGame));
 
   return fail;
 };

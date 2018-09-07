@@ -1,4 +1,4 @@
-const timer = (game, time) => {
+const subTime = (game, time) => {
   if (typeof time !== `number`) {
     throw new Error(`Time should be of type number`);
   }
@@ -13,4 +13,4 @@ const timer = (game, time) => {
   });
   return newGame;
 };
-export default timer;
+export default subTime;
