@@ -1,10 +1,16 @@
-export const timer = (time) => {
+const timer = (game, time) => {
   if (typeof time !== `number`) {
-    throw new Error(`The time argument must be a number`);
+    throw new Error(`Time should be of type number`);
   }
-  if (time <= 0) {
-    throw new Error(`The time argument must be greater than zero`);
+
+  if (time < 0) {
+    throw new Error(`Time should not be negative value`);
   }
-  const newTime = time - 1;
-  return newTime;
+
+  const newTime = game.time - time;
+  const newGame = Object.assign({}, game, {
+    time: newTime
+  });
+  return newGame;
 };
+export default timer;

@@ -1,6 +1,6 @@
 import {getPlayerProgress} from "./player-progress";
 
-export const getPlayerResults = (statistics, progress) => {
+const getPlayerResults = (statistics, progress) => {
   const playerProgress = getPlayerProgress(progress);
   if (playerProgress.leftTime < 0) {
     return `Время вышло! Вы не успели отгадать все мелодии`;
@@ -16,3 +16,5 @@ export const getPlayerResults = (statistics, progress) => {
   const worstPercent = (100 * worstStatistics.length / newStatistics.length).toFixed(0);
   return `Вы заняли ${playerPosition} место из ${newStatistics.length}. Это лучше, чем у ${worstPercent}% игроков`;
 };
+
+export default getPlayerResults;

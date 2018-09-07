@@ -1,7 +1,6 @@
 import {LIVES} from "../../data/constants";
 
-const getHeader = (state) => {
-  return `<header class="game__header">
+const getHeader = (state) => `<header class="game__header">
 <a class="game__back" href="#">
   <span class="visually-hidden">Сыграть ещё раз</span>
   <img class="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию">
@@ -23,6 +22,5 @@ const getHeader = (state) => {
 	${new Array(LIVES - state.lives).fill(`<div class="wrong"></div>`)}
 </div>
 </header>`;
-};
 
 export default getHeader;

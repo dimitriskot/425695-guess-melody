@@ -11,7 +11,7 @@ export default [
     name: `In the Land of Rhinoplasty`,
     image: `https://i.vimeocdn.com/portrait/992615_300x300`,
     src: `https://www.youtube.com/audiolibrary_download?vid=dc3b4dc549becd6b`,
-    genre: `Indie-Rock`
+    genre: `Rock`
   },
   {
     artist: `Audionautix`,
@@ -21,11 +21,11 @@ export default [
     genre: `Country`
   },
   {
-    artist: `Jingle Punks`,
-    name: `In the Land of Rhinoplasty`,
-    image: `https://i.vimeocdn.com/portrait/992615_300x300`,
-    src: `https://www.youtube.com/audiolibrary_download?vid=dc3b4dc549becd6b`,
-    genre: `Indie-Rock`
+    artist: `Riot`,
+    name: `	Level Plane`,
+    image: `https://i.ytimg.com/vi/jzgM3m8Vp1k/maxresdefault.jpg`,
+    src: `https://www.youtube.com/audiolibrary_download?vid=dfb828f40096184c`,
+    genre: `R&B`
   },
   {
     artist: `Jingle Punks`,

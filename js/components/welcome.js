@@ -1,6 +1,6 @@
-import {getDom, selectTemplate} from "./util";
-import initialState from "../data/initial-state";
-import gameGenre from "./game-genre";
+import {getDom} from "./util";
+import {currentGame} from "../data/initial-game";
+import {renderGame} from '../game-logic/game';
 
 const classNames = [`welcome`];
 const markUp = `<div class="welcome__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
@@ -15,7 +15,6 @@ const markUp = `<div class="welcome__logo"><img src="img/melody-logo.png" alt="�
 
 const welcome = getDom(markUp, classNames);
 const startGameButton = welcome.querySelector(`.welcome__button`);
-const genreLevel = gameGenre(initialState);
-startGameButton.addEventListener(`click`, () => selectTemplate(genreLevel));
+startGameButton.addEventListener(`click`, () => renderGame(currentGame));
 
-export {welcome};
+export default welcome;

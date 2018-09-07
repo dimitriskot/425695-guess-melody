@@ -1,5 +1,5 @@
 import {getArtistAnswer} from "./artistAnswer";
-import tracks from "../../../data/audio-list";
+import tracks from "../../../data/tracks";
 
 const answerList = tracks.slice(0, 3).map((el, i) => getArtistAnswer(i + 1, el.artist)).join(``);
 
