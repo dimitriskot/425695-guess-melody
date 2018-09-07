@@ -62,6 +62,40 @@ const gameGenre = (game, level) => {
     playGame(newGame);
   };
 
+  const onPlayButtonClick = (e, buttons) => {
+    const currentButton = e.target;
+    const currentAudio = currentButton.nextElementSibling.querySelector(`audio`);
+    buttons.forEach((button) => {
+      if (button !== currentButton) {
+        button.classList.remove(`track__button--pause`);
+        const audio = button.nextElementSibling.querySelector(`audio`);
+        audio.classList.remove(`active`);
+        audio.pause();
+      }
+    });
+    toggleAudio(currentAudio);
+    togglePlayButton(currentButton);
+  };
+
+  const playButtons = genreLevel.querySelectorAll(`.track__button`);
+  [...playButtons].forEach((button, i, buttons) => {
+    button.addEventListener(`click`, (e) => onPlayButtonClick(e, buttons));
+  });
+
+  const toggleAudio = (audio) => {
+    if (audio.classList.contains(`active`)) {
+      audio.classList.remove(`active`);
+      audio.pause();
+    } else {
+      audio.classList.add(`active`);
+      audio.play();
+    }
+  };
+
+  const togglePlayButton = (button) => {
+    button.classList.toggle(`track__button--pause`);
+  };
+
   gameBack.addEventListener(`click`, () => selectTemplate(welcome()));
   gameSubmitButton.addEventListener(`click`, (e) => submitAnswer(e));
 

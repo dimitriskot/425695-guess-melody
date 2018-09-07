@@ -9,9 +9,6 @@ import subLevelsCount from "../game-logic/levels-count";
 import levelChange from "../game-logic/level-change";
 import failTries from "./fail-tries";
 import {playGame} from '../game-logic/game';
-// import resultSuccess from "./result-success";
-// import failTime from "./fail-time";
-// import failTries from "./fail-tries";
 
 const gameArtist = (game, level) => {
   const header = getDom(getHeader(game));
@@ -43,6 +40,30 @@ const gameArtist = (game, level) => {
     newGame = subTime(newGame, 30000);
     newGame = levelChange(newGame, ++newGame.level);
     playGame(newGame);
+  };
+
+  const onPlayButtonClick = (e) => {
+    const currentButton = e.target;
+    const currentAudio = currentButton.nextElementSibling;
+    toggleAudio(currentAudio);
+    togglePlayButton(currentButton);
+  };
+
+  const playButton = artistLevel.querySelector(`.track__button`);
+  playButton.addEventListener(`click`, onPlayButtonClick);
+
+  const toggleAudio = (audio) => {
+    if (audio.classList.contains(`active`)) {
+      audio.classList.remove(`active`);
+      audio.pause();
+    } else {
+      audio.classList.add(`active`);
+      audio.play();
+    }
+  };
+
+  const togglePlayButton = (button) => {
+    button.classList.toggle(`track__button--pause`);
   };
 
   gameBack.addEventListener(`click`, () => selectTemplate(welcome()));
