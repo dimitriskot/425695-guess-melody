@@ -1,69 +1,80 @@
-import {getDom, selectTemplate} from "./util";
-import {HALF_MINUTE_MS} from "../data/constants";
-import welcome from "./welcome";
-import getHeader from "./templates/header";
-import {getGenreContent} from "./templates/genre/content";
-import getPlayerAnswer from "../game-logic/player-answer";
-import subPlayerLives from "../game-logic/player-lives";
-import subTime from "../game-logic/timer";
-import subLevelsCount from "../game-logic/levels-count";
-import levelChange from "../game-logic/level-change";
-import failTries from "./fail-tries";
-import {playGame} from '../game-logic/game';
+import GameView from "../components/common/game-view";
+import {getDom} from "./util";
 
-const gameGenre = (game, level) => {
-  const header = getDom(getHeader(game));
-  const content = getDom(getGenreContent(level));
-  const classNames = [`game`, `game--genre`];
-  const genreLevel = getDom(null, classNames);
+export default class GameGenreView extends GameView {
+  constructor(game, level) {
+    super();
+    this.game = game;
+    this.level = level;
+  }
 
-  genreLevel.appendChild(header);
-  genreLevel.appendChild(content);
+  get template() {
+    return `<section class="game__screen">
+    <h2 class="game__title">${this.level.title}</h2>
+    <form class="game__tracks">
+      ${this.level.tracks.map((track, id) => `<div class="track">
+          <button class="track__button track__button--play" type="button"></button>
+          <div class="track__status">
+          <audio src="${track.src}"></audio>
+          </div>
+          <div class="game__answer">
+          <input class="game__input visually-hidden" type="checkbox" name="answer" value="${track.genre}" id="${id}">
+          <label class="game__check" for="${id}">Отметить</label>
+          </div>
+        </div>`).join(``)}
+      <button class="game__submit button" type="submit">Ответить</button>
+    </form>
+    </section>`;
+  }
 
-  const gameSubmitButton = genreLevel.querySelector(`.game__submit`);
-  const gameBack = genreLevel.querySelector(`.game__back`);
-  const answers = genreLevel.querySelectorAll(`.game__answer > .game__input`);
-
-  gameSubmitButton.disabled = true;
-
-  const toggleSubmitButtonDisabled = (answer, answersCollection) => {
-    if (answer.checked) {
-      gameSubmitButton.disabled = false;
-    } else if (!answersCollection.some((el) => el.checked)) {
-      gameSubmitButton.disabled = true;
+  get element() {
+    if (this._element) {
+      return this._element;
     }
-  };
+    this._element = this.render();
+    this.bind(this._element);
+    return this._element;
+  }
 
-  [...answers].forEach((answer, i, answersCollection) => {
-    answer.addEventListener(`change`, () => toggleSubmitButtonDisabled(answer, answersCollection));
-  });
+  render() {
+    return getDom(this.template);
+  }
 
-  const checkAnswers = () => {
+  bind() {
+    const gameSubmitButton = this._element.querySelector(`.game__submit`);
+    gameSubmitButton.disabled = true;
+    const answers = this._element.querySelectorAll(`.game__answer > .game__input`);
+    [...answers].forEach((answer, i, answersCollection) => {
+      answer.addEventListener(`change`, () => this.toggleSubmitButtonDisabled(answer, answersCollection, gameSubmitButton));
+    });
+    const playButtons = this._element.querySelectorAll(`.track__button`);
+    [...playButtons].forEach((button, i, buttons) => {
+      button.addEventListener(`click`, (e) => this.onPlayButtonClick(e, buttons));
+    });
+    gameSubmitButton.addEventListener(`click`, (e) => this.submitAnswer(e, answers));
+  }
+
+  checkAnswers(answers) {
     const userAnswers = [...answers].filter((answer) => answer.checked === true);
-    const isSuccess = userAnswers.every((answer) => level.tracks[answer.id].isCorrect);
+    const isSuccess = userAnswers.every((answer) => this.level.tracks[answer.id].isCorrect);
     return isSuccess;
-  };
+  }
 
-  const submitAnswer = (e) => {
-    e.preventDefault();
-    const isSuccess = checkAnswers();
-    let newGame = Object.assign({}, game);
-    newGame = getPlayerAnswer(newGame, isSuccess, HALF_MINUTE_MS);
-    if (isSuccess) {
-      newGame = subLevelsCount(newGame);
-    } else {
-      newGame = subPlayerLives(newGame);
-      if (newGame.lives === 0) {
-        selectTemplate(failTries());
-        return;
-      }
+  toggleSubmitButtonDisabled(answer, answers, button) {
+    if (answer.checked) {
+      button.disabled = false;
+    } else if (!answers.some((el) => el.checked)) {
+      button.disabled = true;
     }
-    newGame = subTime(newGame, HALF_MINUTE_MS);
-    newGame = levelChange(newGame, ++newGame.level);
-    playGame(newGame);
-  };
+  }
 
-  const onPlayButtonClick = (e, buttons) => {
+  submitAnswer(e, answers) {
+    e.preventDefault();
+    const isSuccess = this.checkAnswers(answers);
+    super.getLevelResult(isSuccess);
+  }
+
+  onPlayButtonClick(e, buttons) {
     const currentButton = e.target;
     const currentAudio = currentButton.nextElementSibling.querySelector(`audio`);
     buttons.forEach((button) => {
@@ -74,33 +85,7 @@ const gameGenre = (game, level) => {
         audio.pause();
       }
     });
-    toggleAudio(currentAudio);
-    togglePlayButton(currentButton);
-  };
-
-  const playButtons = genreLevel.querySelectorAll(`.track__button`);
-  [...playButtons].forEach((button, i, buttons) => {
-    button.addEventListener(`click`, (e) => onPlayButtonClick(e, buttons));
-  });
-
-  const toggleAudio = (audio) => {
-    if (audio.classList.contains(`active`)) {
-      audio.classList.remove(`active`);
-      audio.pause();
-    } else {
-      audio.classList.add(`active`);
-      audio.play();
-    }
-  };
-
-  const togglePlayButton = (button) => {
-    button.classList.toggle(`track__button--pause`);
-  };
-
-  gameBack.addEventListener(`click`, () => selectTemplate(welcome()));
-  gameSubmitButton.addEventListener(`click`, (e) => submitAnswer(e));
-
-  return genreLevel;
-};
-
-export default gameGenre;
+    super.toggleAudio(currentAudio);
+    super.togglePlayButton(currentButton);
+  }
+}
