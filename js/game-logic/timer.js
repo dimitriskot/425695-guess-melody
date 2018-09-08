@@ -1,10 +1,10 @@
 const subTime = (game, time) => {
   if (typeof time !== `number`) {
-    throw new Error(`Time should be of type number`);
+    throw new Error(`The time argument must be a number`);
   }
 
   if (time < 0) {
-    throw new Error(`Time should not be negative value`);
+    throw new Error(`The time argument must be greater than zero`);
   }
 
   const newTime = game.time - time;

@@ -42,8 +42,8 @@ export const results = [
         time: 30000
       }
     ],
-    leftNotes: 3,
-    leftTime: 0
+    lives: 3,
+    time: 0
   },
   {
     answers: [
@@ -88,8 +88,8 @@ export const results = [
         time: 30000
       }
     ],
-    leftNotes: 3,
-    leftTime: 50000
+    lives: 3,
+    time: 50000
   },
   {
     answers: [
@@ -134,8 +134,8 @@ export const results = [
         time: 30001
       }
     ],
-    leftNotes: 3,
-    leftTime: -1
+    lives: 3,
+    time: -1
   },
   {
     answers: [
@@ -180,8 +180,8 @@ export const results = [
         time: 80001
       }
     ],
-    leftNotes: 3,
-    leftTime: -1
+    lives: 3,
+    time: -1
   },
   {
     answers: [
@@ -226,8 +226,8 @@ export const results = [
         time: 30000
       }
     ],
-    leftNotes: 0,
-    leftTime: 0
+    lives: 0,
+    time: 0
   },
   {
     answers: [
@@ -272,8 +272,8 @@ export const results = [
         time: 30000
       }
     ],
-    leftNotes: 0,
-    leftTime: 50000
+    lives: 0,
+    time: 50000
   },
   // data for player lives test
   {
@@ -299,8 +299,8 @@ export const results = [
         time: 30000
       }
     ],
-    leftNotes: 3,
-    leftTime: 150000
+    lives: 3,
+    time: 150000
   },
   {
     answers: [
@@ -325,8 +325,8 @@ export const results = [
         time: 30000
       }
     ],
-    leftNotes: 2,
-    leftTime: 150000
+    lives: 2,
+    time: 150000
   },
   {
     answers: [
@@ -351,8 +351,8 @@ export const results = [
         time: 30000
       }
     ],
-    leftNotes: 1,
-    leftTime: 150000
+    lives: 1,
+    time: 150000
   },
   {
     answers: [
@@ -377,8 +377,8 @@ export const results = [
         time: 30000
       }
     ],
-    leftNotes: 3,
-    leftTime: 150000
+    lives: 3,
+    time: 150000
   },
   {
     answers: [
@@ -399,8 +399,8 @@ export const results = [
         time: 30000
       }
     ],
-    leftNotes: 2,
-    leftTime: 150000
+    lives: 2,
+    time: 150000
   },
   {
     answers: [
@@ -421,8 +421,8 @@ export const results = [
         time: 30000
       }
     ],
-    leftNotes: 1,
-    leftTime: 150000
+    lives: 1,
+    time: 150000
   },
   {
     answers: [
@@ -443,7 +443,7 @@ export const results = [
         time: 30000
       }
     ],
-    leftNotes: 0,
-    leftTime: 150000
+    lives: 0,
+    time: 150000
   }
 ];
