@@ -1,8 +1,23 @@
 import tracks from "./tracks";
 
+const levelsData = {
+  tracks: [
+    {
+      genre: `indie-rock`,
+      title: `Выберите инди-рок треки`
+    }
+  ],
+  artists: [
+    {
+      artist: `jingle punks`,
+      title: `Кто исполняет эту песню?`
+    }
+  ]
+};
+
 export const levels = [
   {
-    title: `Выберите инди-рок треки`,
+    title: levelsData.tracks[0].title,
     type: `tracks`,
     tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
@@ -12,7 +27,7 @@ export const levels = [
     ],
   },
   {
-    title: `Кто исполняет эту песню?`,
+    title: levelsData.artists[0].title,
     type: `artists`,
     artists: [
       Object.assign({}, tracks[0], {isCorrect: false}),
@@ -21,7 +36,7 @@ export const levels = [
     ],
   },
   {
-    title: `Выберите инди-рок треки`,
+    title: levelsData.tracks[0].title,
     type: `tracks`,
     tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
@@ -31,7 +46,7 @@ export const levels = [
     ],
   },
   {
-    title: `Кто исполняет эту песню?`,
+    title: levelsData.artists[0].title,
     type: `artists`,
     artists: [
       Object.assign({}, tracks[0], {isCorrect: false}),
@@ -40,7 +55,7 @@ export const levels = [
     ],
   },
   {
-    title: `Выберите инди-рок треки`,
+    title: levelsData.tracks[0].title,
     type: `tracks`,
     tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
@@ -50,7 +65,7 @@ export const levels = [
     ],
   },
   {
-    title: `Кто исполняет эту песню?`,
+    title: levelsData.artists[0].title,
     type: `artists`,
     artists: [
       Object.assign({}, tracks[0], {isCorrect: false}),
@@ -59,7 +74,7 @@ export const levels = [
     ],
   },
   {
-    title: `Выберите инди-рок треки`,
+    title: levelsData.tracks[0].title,
     type: `tracks`,
     tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
@@ -69,7 +84,7 @@ export const levels = [
     ],
   },
   {
-    title: `Кто исполняет эту песню?`,
+    title: levelsData.artists[0].title,
     type: `artists`,
     artists: [
       Object.assign({}, tracks[0], {isCorrect: false}),
@@ -78,7 +93,7 @@ export const levels = [
     ],
   },
   {
-    title: `Выберите инди-рок треки`,
+    title: levelsData.tracks[0].title,
     type: `tracks`,
     tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
@@ -88,7 +103,7 @@ export const levels = [
     ],
   },
   {
-    title: `Кто исполняет эту песню?`,
+    title: levelsData.artists[0].title,
     type: `artists`,
     artists: [
       Object.assign({}, tracks[0], {isCorrect: false}),
@@ -97,7 +112,7 @@ export const levels = [
     ],
   },
   {
-    title: `Выберите инди-рок треки`,
+    title: levelsData.tracks[0].title,
     type: `tracks`,
     tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
@@ -107,7 +122,7 @@ export const levels = [
     ],
   },
   {
-    title: `Кто исполняет эту песню?`,
+    title: levelsData.artists[0].title,
     type: `artists`,
     artists: [
       Object.assign({}, tracks[0], {isCorrect: false}),
@@ -116,7 +131,7 @@ export const levels = [
     ],
   },
   {
-    title: `Выберите инди-рок треки`,
+    title: levelsData.tracks[0].title,
     type: `tracks`,
     tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),

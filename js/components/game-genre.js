@@ -1,4 +1,5 @@
 import {getDom, selectTemplate} from "./util";
+import {HALF_MINUTE_MS} from "../data/constants";
 import welcome from "./welcome";
 import getHeader from "./templates/header";
 import {getGenreContent} from "./templates/genre/content";
@@ -47,7 +48,7 @@ const gameGenre = (game, level) => {
     e.preventDefault();
     const isSuccess = checkAnswers();
     let newGame = Object.assign({}, game);
-    newGame = getPlayerAnswer(newGame, isSuccess, 30000);
+    newGame = getPlayerAnswer(newGame, isSuccess, HALF_MINUTE_MS);
     if (isSuccess) {
       newGame = subLevelsCount(newGame);
     } else {
