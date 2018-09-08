@@ -1,23 +1,18 @@
 import {assert} from "chai";
-import {timer} from "../game-logic/timer";
+import subTime from "../game-logic/timer";
+import {initialState} from "../data/initial-game";
 
 describe(`Timer`, () => {
-  it(`Time argument: 5 units. Should return 4`, () => {
-    assert.equal(4, timer(5));
-  });
-  it(`Time argument: 4 units. Should return 3`, () => {
-    assert.equal(3, timer(4));
-  });
-  it(`Time argument: 1 unit. Should return 0`, () => {
-    assert.equal(0, timer(1));
+  it(`Game time: 5 units. Time argument: 1 unit. Should return 4`, () => {
+    const currentGame = Object.assign({}, initialState, {time: 5});
+    assert.equal(4, subTime(currentGame, 1).time);
   });
   it(`Time argument: 0. Should return an error: "The time argument must be greater than zero"`, () => {
-    assert.throws(() => timer(0), `The time argument must be greater than zero`);
-  });
-  it(`Time argument: -5. Should return an error: "The time argument must be greater than zero"`, () => {
-    assert.throws(() => timer(-5), `The time argument must be greater than zero`);
+    const currentGame = Object.assign({}, initialState, {time: 5});
+    assert.throws(() => subTime(currentGame, -1), `The time argument must be greater than zero`);
   });
   it(`Time argument: an empty object. Should return an error: "The time argument must be a number"`, () => {
-    assert.throws(() => timer({}), `The time argument must be a number`);
+    const currentGame = Object.assign({}, initialState, {time: 5});
+    assert.throws(() => subTime(currentGame, {}), `The time argument must be a number`);
   });
 });

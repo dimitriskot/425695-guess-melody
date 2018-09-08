@@ -1,6 +1,6 @@
 import {assert} from "chai";
 import {results} from "../data/results";
-import {getPlayerResults} from "../game-logic/player-results";
+import getPlayerResults from "../game-logic/player-results";
 
 describe(`Getting player's game result`, () => {
   it(`score: 10, wrong answers: 0, notes left: 3, time left: 0, sholud return:

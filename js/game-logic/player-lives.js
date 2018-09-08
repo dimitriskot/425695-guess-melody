@@ -1,10 +1,15 @@
-export const getPlayerLives = (leftLives, answerSuccess) => {
-  if (leftLives === 0) {
+const subPlayerLives = (game) => {
+  if (typeof game.lives !== `number`) {
+    throw new Error(`ERROR! Lives must be a number`);
+  }
+  if (game.lives <= 0) {
     throw new Error(`ERROR! There is no more lives`);
   }
-  if (answerSuccess) {
-    return leftLives;
-  }
-  const newLivesCount = leftLives - 1;
-  return newLivesCount;
+  const newLives = game.lives - 1;
+  const newGame = Object.assign({}, game, {
+    lives: newLives
+  });
+  return newGame;
 };
+
+export default subPlayerLives;

@@ -2,448 +2,448 @@ export const results = [
   {
     answers: [
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       }
     ],
-    leftNotes: 3,
-    leftTime: 0
+    lives: 3,
+    time: 0
   },
   {
     answers: [
       {
-        succsess: true,
+        success: true,
         time: 20000
       },
       {
-        succsess: true,
+        success: true,
         time: 20000
       },
       {
-        succsess: true,
+        success: true,
         time: 20000
       },
       {
-        succsess: true,
+        success: true,
         time: 20000
       },
       {
-        succsess: true,
+        success: true,
         time: 20000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       }
     ],
-    leftNotes: 3,
-    leftTime: 50000
+    lives: 3,
+    time: 50000
   },
   {
     answers: [
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: null,
+        success: null,
         time: 30001
       }
     ],
-    leftNotes: 3,
-    leftTime: -1
+    lives: 3,
+    time: -1
   },
   {
     answers: [
       {
-        succsess: true,
+        success: true,
         time: 20000
       },
       {
-        succsess: true,
+        success: true,
         time: 20000
       },
       {
-        succsess: true,
+        success: true,
         time: 20000
       },
       {
-        succsess: true,
+        success: true,
         time: 20000
       },
       {
-        succsess: true,
+        success: true,
         time: 20000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: null,
+        success: null,
         time: 80001
       }
     ],
-    leftNotes: 3,
-    leftTime: -1
+    lives: 3,
+    time: -1
   },
   {
     answers: [
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: false,
+        success: false,
         time: 30000
       }
     ],
-    leftNotes: 0,
-    leftTime: 0
+    lives: 0,
+    time: 0
   },
   {
     answers: [
       {
-        succsess: true,
+        success: true,
         time: 20000
       },
       {
-        succsess: true,
+        success: true,
         time: 20000
       },
       {
-        succsess: true,
+        success: true,
         time: 20000
       },
       {
-        succsess: true,
+        success: true,
         time: 20000
       },
       {
-        succsess: true,
+        success: true,
         time: 20000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: false,
+        success: false,
         time: 30000
       }
     ],
-    leftNotes: 0,
-    leftTime: 50000
+    lives: 0,
+    time: 50000
   },
   // data for player lives test
   {
     answers: [
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       }
     ],
-    leftNotes: 3,
-    leftTime: 150000
+    lives: 3,
+    time: 150000
   },
   {
     answers: [
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: false,
+        success: false,
         time: 30000
       }
     ],
-    leftNotes: 2,
-    leftTime: 150000
+    lives: 2,
+    time: 150000
   },
   {
     answers: [
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: false,
+        success: false,
         time: 30000
       },
       {
-        succsess: false,
+        success: false,
         time: 30000
       }
     ],
-    leftNotes: 1,
-    leftTime: 150000
+    lives: 1,
+    time: 150000
   },
   {
     answers: [
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: false,
+        success: false,
         time: 30000
       }
     ],
-    leftNotes: 3,
-    leftTime: 150000
+    lives: 3,
+    time: 150000
   },
   {
     answers: [
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: false,
+        success: false,
         time: 30000
       }
     ],
-    leftNotes: 2,
-    leftTime: 150000
+    lives: 2,
+    time: 150000
   },
   {
     answers: [
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: false,
+        success: false,
         time: 30000
       },
       {
-        succsess: false,
+        success: false,
         time: 30000
       }
     ],
-    leftNotes: 1,
-    leftTime: 150000
+    lives: 1,
+    time: 150000
   },
   {
     answers: [
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: true,
+        success: true,
         time: 30000
       },
       {
-        succsess: false,
+        success: false,
         time: 30000
       },
       {
-        succsess: false,
+        success: false,
         time: 30000
       }
     ],
-    leftNotes: 0,
-    leftTime: 150000
+    lives: 0,
+    time: 150000
   }
 ];
