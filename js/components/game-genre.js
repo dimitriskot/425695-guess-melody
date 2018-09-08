@@ -58,7 +58,7 @@ const gameGenre = (game, level) => {
         return;
       }
     }
-    newGame = subTime(newGame, 30000);
+    newGame = subTime(newGame, HALF_MINUTE_MS);
     newGame = levelChange(newGame, ++newGame.level);
     playGame(newGame);
   };
