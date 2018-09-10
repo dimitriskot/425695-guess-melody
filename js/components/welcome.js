@@ -1,25 +1,40 @@
 import {getDom} from "./util";
-import {currentGame} from "../data/initial-game";
-import {playGame} from '../game-logic/game';
+import {playGame} from "../game-logic/game";
+import AbstractView from "./common/abstract-view";
 
-const welcome = () => {
-  const classNames = [`welcome`];
-  const markUp = `<div class="welcome__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
-  <button class="welcome__button"><span class="visually-hidden">Начать игру</span></button>
-  <h2 class="welcome__rules-title">Правила игры</h2>
-  <p class="welcome__text">Правила просты:</p>
-  <ul class="welcome__rules-list">
-    <li>За 5 минут нужно ответить на все вопросы.</li>
-    <li>Можно допустить 3 ошибки.</li>
-  </ul>
-  <p class="welcome__text">Удачи!</p>`;
+export default class WelcomeView extends AbstractView {
+  constructor(game) {
+    super();
+    this.game = game;
+  }
 
-  const welcomeLevel = getDom(markUp, classNames);
-  const startGameButton = welcomeLevel.querySelector(`.welcome__button`);
-  startGameButton.addEventListener(`click`, () => playGame(currentGame));
+  get template() {
+    return `<div class="welcome__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
+    <button class="welcome__button"><span class="visually-hidden">Начать игру</span></button>
+    <h2 class="welcome__rules-title">Правила игры</h2>
+    <p class="welcome__text">Правила просты:</p>
+    <ul class="welcome__rules-list">
+      <li>За 5 минут нужно ответить на все вопросы.</li>
+      <li>Можно допустить 3 ошибки.</li>
+    </ul>
+    <p class="welcome__text">Удачи!</p>`;
+  }
 
-  return welcomeLevel;
-};
+  get element() {
+    if (this._element) {
+      return this._element;
+    }
+    this._element = this.render();
+    this.bind(this._element);
+    return this._element;
+  }
 
+  render() {
+    return getDom(this.template, [`welcome`]);
+  }
 
-export default welcome;
+  bind() {
+    const startGameButton = this._element.querySelector(`.welcome__button`);
+    startGameButton.addEventListener(`click`, () => playGame(this.game));
+  }
+}

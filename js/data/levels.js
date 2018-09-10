@@ -7,7 +7,7 @@ const getTitle = (genre) => {
 export const levels = [
   {
     title: getTitle(tracks[3].genre),
-    type: `tracks`,
+    type: `genre`,
     tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
       Object.assign({}, tracks[1], {isCorrect: false}),
@@ -18,7 +18,7 @@ export const levels = [
   {
     title: `Кто исполняет эту песню?`,
     type: `artists`,
-    artists: [
+    tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
       Object.assign({}, tracks[1], {isCorrect: true}),
       Object.assign({}, tracks[2], {isCorrect: false})
@@ -26,7 +26,7 @@ export const levels = [
   },
   {
     title: getTitle(tracks[3].genre),
-    type: `tracks`,
+    type: `genre`,
     tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
       Object.assign({}, tracks[1], {isCorrect: false}),
@@ -37,7 +37,7 @@ export const levels = [
   {
     title: `Кто исполняет эту песню?`,
     type: `artists`,
-    artists: [
+    tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
       Object.assign({}, tracks[1], {isCorrect: true}),
       Object.assign({}, tracks[2], {isCorrect: false})
@@ -45,7 +45,7 @@ export const levels = [
   },
   {
     title: getTitle(tracks[3].genre),
-    type: `tracks`,
+    type: `genre`,
     tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
       Object.assign({}, tracks[1], {isCorrect: false}),
@@ -56,7 +56,7 @@ export const levels = [
   {
     title: `Кто исполняет эту песню?`,
     type: `artists`,
-    artists: [
+    tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
       Object.assign({}, tracks[1], {isCorrect: true}),
       Object.assign({}, tracks[2], {isCorrect: false})
@@ -64,7 +64,7 @@ export const levels = [
   },
   {
     title: getTitle(tracks[3].genre),
-    type: `tracks`,
+    type: `genre`,
     tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
       Object.assign({}, tracks[1], {isCorrect: false}),
@@ -75,7 +75,7 @@ export const levels = [
   {
     title: `Кто исполняет эту песню?`,
     type: `artists`,
-    artists: [
+    tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
       Object.assign({}, tracks[1], {isCorrect: true}),
       Object.assign({}, tracks[2], {isCorrect: false})
@@ -83,7 +83,7 @@ export const levels = [
   },
   {
     title: getTitle(tracks[3].genre),
-    type: `tracks`,
+    type: `genre`,
     tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
       Object.assign({}, tracks[1], {isCorrect: false}),
@@ -94,7 +94,7 @@ export const levels = [
   {
     title: `Кто исполняет эту песню?`,
     type: `artists`,
-    artists: [
+    tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
       Object.assign({}, tracks[1], {isCorrect: true}),
       Object.assign({}, tracks[2], {isCorrect: false})
@@ -102,7 +102,7 @@ export const levels = [
   },
   {
     title: getTitle(tracks[3].genre),
-    type: `tracks`,
+    type: `genre`,
     tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
       Object.assign({}, tracks[1], {isCorrect: false}),
@@ -113,7 +113,7 @@ export const levels = [
   {
     title: `Кто исполняет эту песню?`,
     type: `artists`,
-    artists: [
+    tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
       Object.assign({}, tracks[1], {isCorrect: true}),
       Object.assign({}, tracks[2], {isCorrect: false})
@@ -121,7 +121,7 @@ export const levels = [
   },
   {
     title: getTitle(tracks[3].genre),
-    type: `tracks`,
+    type: `genre`,
     tracks: [
       Object.assign({}, tracks[0], {isCorrect: false}),
       Object.assign({}, tracks[1], {isCorrect: false}),

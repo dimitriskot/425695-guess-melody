@@ -1,75 +1,71 @@
-import {getDom, selectTemplate} from "./util";
-import welcome from "./welcome";
-import getHeader from "./templates/header";
-import {getArtistContent} from "../components/templates/artist/content";
-import getPlayerAnswer from "../game-logic/player-answer";
-import subPlayerLives from "../game-logic/player-lives";
-import subTime from "../game-logic/timer";
-import subLevelsCount from "../game-logic/levels-count";
-import levelChange from "../game-logic/level-change";
-import failTries from "./fail-tries";
-import {playGame} from '../game-logic/game';
+import GameView from "../components/common/game-view";
+import {getDom} from "./util";
 
-const gameArtist = (game, level) => {
-  const header = getDom(getHeader(game));
-  const content = getDom(getArtistContent(level));
-  const classNames = [`game`, `game--artist`];
-  const artistLevel = getDom(null, classNames);
+export default class GameArtistView extends GameView {
+  constructor(game, level) {
+    super();
+    this.game = game;
+    this.level = level;
+  }
 
-  artistLevel.appendChild(header);
-  artistLevel.appendChild(content);
+  get template() {
+    return `<section class="game__screen">
+    <h2 class="game__title">${this.level.title}</h2>
+    <div class="game__track">
+      <button class="track__button track__button--play" type="button"></button>
+      <audio src="${this.level.tracks.find((item) => item.isCorrect).src}"></audio>
+      </div>
+    <form class="game__artist">
+      ${this.level.tracks.map((track, id) => `<div class="artist">
+        <input class="artist__input visually-hidden" type="radio" name="answer" value="${track.artist}" id="${id}">
+        <label class="artist__name" for="${id}">
+          <img class="artist__picture" src="${track.image}" alt="${track.artist}">
+          ${track.artist}
+        </label>
+        </div>`).join(``)}
+    </form>
+    </section>`;
+  }
 
-  const gameBack = artistLevel.querySelector(`.game__back`);
-  const answers = artistLevel.querySelectorAll(`.artist__input`);
+  get element() {
+    if (this._element) {
+      return this._element;
+    }
+    this._element = this.render();
+    this.bind(this._element);
+    return this._element;
+  }
 
-  const submitAnswer = (e) => {
+  render() {
+    return getDom(this.template);
+  }
+
+  bind() {
+    const answers = this._element.querySelectorAll(`.artist__input`);
+    const playButton = this._element.querySelector(`.track__button`);
+    playButton.addEventListener(`click`, (e) => this.onPlayButtonClick(e));
+    [...answers].forEach((input) => input.addEventListener(`click`, (e) => this.submitAnswer(e)));
+  }
+
+  toggleSubmitButtonDisabled(answer, answers, button) {
+    if (answer.checked) {
+      button.disabled = false;
+    } else if (!answers.some((el) => el.checked)) {
+      button.disabled = true;
+    }
+  }
+
+  submitAnswer(e) {
     e.preventDefault();
     const answer = e.target;
-    const isSuccess = level.artists[answer.id].isCorrect;
-    let newGame = Object.assign({}, game);
-    newGame = getPlayerAnswer(newGame, isSuccess, 30000);
-    if (isSuccess) {
-      newGame = subLevelsCount(newGame);
-    } else {
-      newGame = subPlayerLives(newGame);
-      if (newGame.lives === 0) {
-        selectTemplate(failTries());
-        return;
-      }
-    }
-    newGame = subTime(newGame, 30000);
-    newGame = levelChange(newGame, ++newGame.level);
-    playGame(newGame);
-  };
+    const isSuccess = this.level.tracks[answer.id].isCorrect;
+    super.getLevelResult(isSuccess);
+  }
 
-  const onPlayButtonClick = (e) => {
+  onPlayButtonClick(e) {
     const currentButton = e.target;
     const currentAudio = currentButton.nextElementSibling;
-    toggleAudio(currentAudio);
-    togglePlayButton(currentButton);
-  };
-
-  const playButton = artistLevel.querySelector(`.track__button`);
-  playButton.addEventListener(`click`, onPlayButtonClick);
-
-  const toggleAudio = (audio) => {
-    if (audio.classList.contains(`active`)) {
-      audio.classList.remove(`active`);
-      audio.pause();
-    } else {
-      audio.classList.add(`active`);
-      audio.play();
-    }
-  };
-
-  const togglePlayButton = (button) => {
-    button.classList.toggle(`track__button--pause`);
-  };
-
-  gameBack.addEventListener(`click`, () => selectTemplate(welcome()));
-  [...answers].forEach((input) => input.addEventListener(`click`, (e) => submitAnswer(e)));
-
-  return artistLevel;
-};
-
-export default gameArtist;
+    super.toggleAudio(currentAudio);
+    super.togglePlayButton(currentButton);
+  }
+}

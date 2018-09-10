@@ -1,4 +1,6 @@
-import welcome from "./components/welcome";
 import {selectTemplate} from "./components/util";
+import WelcomeView from "./components/welcome";
+import {currentGame} from "./data/initial-game";
 
-selectTemplate(welcome());
+const welcome = new WelcomeView(currentGame);
+selectTemplate(welcome.element);
