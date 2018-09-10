@@ -1,5 +1,5 @@
-import GameView from "../components/common/game-view";
-import {getDom} from "./util";
+import GameView from "./game";
+import {getDom} from "../components/util";
 
 export default class GameGenreView extends GameView {
   constructor(game, level) {
@@ -51,7 +51,10 @@ export default class GameGenreView extends GameView {
     [...playButtons].forEach((button, i, buttons) => {
       button.addEventListener(`click`, (e) => this.onPlayButtonClick(e, buttons));
     });
-    gameSubmitButton.addEventListener(`click`, (e) => this.submitAnswer(e, answers));
+    gameSubmitButton.addEventListener(`click`, (e) => {
+      e.preventDefault();
+      this.submitAnswer(e, answers);
+    });
   }
 
   checkAnswers(answers) {
@@ -68,10 +71,13 @@ export default class GameGenreView extends GameView {
     }
   }
 
-  submitAnswer(e, answers) {
-    e.preventDefault();
-    const isSuccess = this.checkAnswers(answers);
-    super.getLevelResult(this.game, isSuccess);
+  submitAnswer() {
+    console.log(e);
+    // e.preventDefault();
+    // const userAnswers = [...answers].filter((answer) => answer.checked === true);
+    // const isSuccess = userAnswers.every((answer) => this.level.tracks[answer.id].isCorrect);
+    // return isSuccess;
+    // super.getLevelResult(this.game, isSuccess);
   }
 
   onPlayButtonClick(e, buttons) {

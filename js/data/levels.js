@@ -131,6 +131,10 @@ export const levels = [
   }
 ];
 
+// export const getLevel = (game) => {
+//   return levels[currentLevel];
+// };
+
 export const getLevelData = (currentLevel) => {
   return levels[currentLevel];
 };

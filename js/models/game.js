@@ -1,11 +1,14 @@
+import {currentGame} from "../data/initial-game";
+import {getLevelData} from "../data/levels";
 import levelChange from "../game-logic/level-change";
 import subLevelsCount from "../game-logic/levels-count";
 import getPlayerAnswer from "../game-logic/player-answer";
-import subPlayerLives from "../../game-logic/player-lives";
+import subPlayerLives from "../game-logic/player-lives";
 
 export default class GameModel {
   constructor(game) {
     this.game = game;
+    this.restart();
   }
 
   get state() {
@@ -32,16 +35,20 @@ export default class GameModel {
   //   this._state = die(this._state);
   // }
 
-  // restart() {
-  //   this._state = INITIAL_GAME;
-  // }
+  restart() {
+    this._state = this.game;
+  }
 
   // isDead() {
   //   return this._state.lives <= 0;
   // }
 
+  getCurrentLevelData() {
+    return getLevelData(this._state.level);
+  }
+
   // getCurrentLevel() {
-  //   return getLevel(this._state);
+  //   return getLevelData(this._state.level);
   // }
 
   // tick() {

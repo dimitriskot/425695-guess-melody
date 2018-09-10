@@ -1,8 +1,8 @@
-import AbstractView from "./abstract-view";
-import {LIVES} from "../../data/constants";
-import {getDom, selectTemplate} from "../util";
-import WelcomeView from "../welcome";
-import {currentGame} from "../../data/initial-game";
+import AbstractView from "../components/common/abstract-view";
+import {LIVES} from "../data/constants";
+import {getDom, selectTemplate} from "../components/util";
+import WelcomeView from "../components/welcome";
+import {currentGame} from "../data/initial-game";
 
 export default class HeaderView extends AbstractView {
   constructor(game) {
