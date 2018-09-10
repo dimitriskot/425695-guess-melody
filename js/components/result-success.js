@@ -1,7 +1,7 @@
 import AbstractView from "./common/abstract-view";
 import {getDom} from "./util";
 import {currentGame} from "../data/initial-game";
-import {playGame} from '../game-logic/game';
+import {updateGame} from '../game-logic/update-game';
 
 export default class ResultSuccessView extends AbstractView {
   constructor(results) {
@@ -33,6 +33,6 @@ export default class ResultSuccessView extends AbstractView {
 
   bind() {
     const replayButton = this._element.querySelector(`.result__replay`);
-    replayButton.addEventListener(`click`, () => playGame(currentGame));
+    replayButton.addEventListener(`click`, () => updateGame(currentGame));
   }
 }

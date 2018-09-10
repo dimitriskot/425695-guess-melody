@@ -26,19 +26,6 @@ export default class GameView extends AbstractView {
     return getDom(this.template, [`game`]);
   }
 
-  getLevelResult(game, isSuccess) {
-    let newGame = Object.assign({}, game);
-    newGame = getPlayerAnswer(newGame, isSuccess, HALF_MINUTE_MS);
-    if (isSuccess) {
-      newGame = subLevelsCount(newGame);
-    } else {
-      newGame = subPlayerLives(newGame);
-    }
-    newGame = subTime(newGame, HALF_MINUTE_MS);
-    newGame = levelChange(newGame, ++newGame.level);
-    updateGame(newGame);
-  }
-
   toggleAudio(audio) {
     if (audio.classList.contains(`active`)) {
       audio.classList.remove(`active`);

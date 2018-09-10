@@ -7,7 +7,7 @@ import GameGenreView from "../components/game-genre";
 import GameArtistView from "../components/game-artist";
 import {CLASSES} from "../data/constants";
 
-export const playGame = (game) => {
+export const updateGame = (game) => {
   const levelData = getLevelData(game.level);
   const LevelView = levelData.type === `genre` ? GameGenreView : GameArtistView;
 
