@@ -1,8 +1,5 @@
 import AbstractView from "../common/abstract";
 import {getDom} from "../../components/util";
-import {CONFIRM} from "../../data/constants";
-import {currentGame} from "../../data/initial-game";
-import Router from "../../router";
 
 export default class ConfirmView extends AbstractView {
   constructor(game) {
@@ -37,19 +34,14 @@ export default class ConfirmView extends AbstractView {
     const closeButton = this._element.querySelector(`.modal__close`);
     closeButton.addEventListener(`click`, (e) => {
       e.preventDefault();
-      Router.showGame(this.game);
+      this.oncloseButtonClick();
     });
     const modalButtons = this._element.querySelectorAll(`.modal__button`);
     modalButtons.forEach((button) => button.addEventListener(`click`, (e) => {
       e.preventDefault();
-      if (e.target.innerText === CONFIRM.ok) {
-        Router.showGame(currentGame);
-        return;
-      }
-      if (e.target.innerText === CONFIRM.cancel) {
-        Router.showGame(this.game);
-        return;
-      }
+      this.onModalButtonsClick(e);
     }));
   }
+
+  onModalButtonsClick() {}
 }

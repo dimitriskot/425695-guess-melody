@@ -18,6 +18,7 @@ export default class GamePresenter {
     this.root.element.appendChild(this.content.element);
 
     this._interval = null;
+    // this.resetLevelTime();
   }
 
   get element() {
@@ -30,6 +31,10 @@ export default class GamePresenter {
 
   getLevelView() {
     this.LevelView = this.isGenre() ? GameGenreView : GameArtistView;
+  }
+
+  resetLevelTime() {
+    this._levelTime = 0;
   }
 
   stopGame() {
@@ -45,6 +50,8 @@ export default class GamePresenter {
         this.model.gameResults();
         return;
       }
+      this._levelTime = this._levelTime + SECOND_MS;
+      console.log(this._levelTime);
       this.model.subTime(SECOND_MS);
       this.updateHeader();
     }, SECOND_MS);
@@ -69,32 +76,12 @@ export default class GamePresenter {
     const header = new HeaderView(this.model.state);
     this.root.element.replaceChild(header.element, this.header.element);
     this.header = header;
+    this.header.onGameBackButtonClick = this.onGameBackButtonClick.bind(this);
   }
 
   changeContentView(view) {
     this.root.element.replaceChild(view.element, this.content.element);
     this.content = view;
-  }
-
-  updateGameData(isSuccess) {
-    this.model.playerAnswer(isSuccess, HALF_MINUTE_MS);
-    if (isSuccess) {
-      this.model.subLevels();
-    } else {
-      this.model.subLives();
-    }
-  }
-
-  getLevelResult() {
-    this.stopGame();
-    if (!this.model.isLevelsOver() && !this.model.isLoser()) {
-      this.model.nextLevel();
-      this.data = this.model.getCurrentLevelData();
-      this.getLevelView();
-      this.startGame();
-    } else {
-      this.model.gameResults();
-    }
   }
 
   submitAnswer(e, answers) {
@@ -151,4 +138,33 @@ export default class GamePresenter {
     this.toggleAudio(currentAudio);
     this.togglePlayButton(currentButton);
   }
+
+  onGameBackButtonClick() {
+    this.stopGame();
+    this.model.showConfirm();
+  }
+
+  updateGameData(isSuccess) {
+    this.model.playerAnswer(isSuccess, this._levelTime);
+    this.resetLevelTime();
+    this._levelTime = 0;
+    if (isSuccess) {
+      this.model.subLevels();
+    } else {
+      this.model.subLives();
+    }
+  }
+
+  getLevelResult() {
+    this.stopGame();
+    if (!this.model.isLevelsOver() && !this.model.isLoser()) {
+      this.model.nextLevel();
+      this.data = this.model.getCurrentLevelData();
+      this.getLevelView();
+      this.startGame();
+    } else {
+      this.model.gameResults();
+    }
+  }
+
 }
