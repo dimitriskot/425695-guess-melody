@@ -1,6 +1,6 @@
 import {selectTemplate} from "../components/util";
 import {getLevelData} from "../data/levels";
-import getPlayerResults from "./player-results";
+import getPlayerResults from "./game-results";
 import HeaderView from "../components/common/header-view";
 import GameView from "../components/common/game-view";
 import GameGenreView from "../components/game-genre";

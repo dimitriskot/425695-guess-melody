@@ -1,19 +1,15 @@
-import {selectTemplate} from "../components/util";
 import {getPlayerProgress} from "./player-progress";
 import {FAILS} from "../data/constants";
-import FailView from "../components/common/fail-view";
-import ResultSuccessView from "../components/result-success";
+import Router from "../router";
 
-const getPlayerResults = (statistics, progress) => {
+const getGameResults = (progress, statistics) => {
   const playerProgress = getPlayerProgress(progress);
-  if (playerProgress.time < 0) {
-    const fail = new FailView(FAILS.time).element;
-    selectTemplate(fail);
+  if (playerProgress.time <= 0) {
+    Router.showFail(FAILS.time);
     return;
   }
   if (playerProgress.lives === 0) {
-    const fail = new FailView(FAILS.tries).element;
-    selectTemplate(fail);
+    Router.showFail(FAILS.tries);
     return;
   }
   let newStatistics = statistics;
@@ -27,8 +23,7 @@ const getPlayerResults = (statistics, progress) => {
     places: newStatistics.length,
     percent: worstPercent
   };
-  const resultsSuccess = new ResultSuccessView(results).element;
-  selectTemplate(resultsSuccess);
+  Router.showStats(results);
 };
 
-export default getPlayerResults;
+export default getGameResults;

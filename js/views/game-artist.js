@@ -46,26 +46,4 @@ export default class GameArtistView extends GameView {
     playButton.addEventListener(`click`, (e) => this.onPlayButtonClick(e));
     [...answers].forEach((input) => input.addEventListener(`click`, (e) => this.submitAnswer(e)));
   }
-
-  toggleSubmitButtonDisabled(answer, answers, button) {
-    if (answer.checked) {
-      button.disabled = false;
-    } else if (!answers.some((el) => el.checked)) {
-      button.disabled = true;
-    }
-  }
-
-  submitAnswer(e) {
-    e.preventDefault();
-    const answer = e.target;
-    const isSuccess = this.level.tracks[answer.id].isCorrect;
-    super.getLevelResult(this.game, isSuccess);
-  }
-
-  onPlayButtonClick(e) {
-    const currentButton = e.target;
-    const currentAudio = currentButton.nextElementSibling;
-    super.toggleAudio(currentAudio);
-    super.togglePlayButton(currentButton);
-  }
 }

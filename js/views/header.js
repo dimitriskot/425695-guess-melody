@@ -1,4 +1,4 @@
-import AbstractView from "../components/common/abstract-view";
+import AbstractView from "./common/abstract-view";
 import {LIVES} from "../data/constants";
 import {getDom, selectTemplate} from "../components/util";
 import WelcomeView from "../components/welcome";

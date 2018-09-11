@@ -1,4 +1,4 @@
-const subTime = (game, time) => {
+const subGameTime = (game, time) => {
   if (typeof time !== `number`) {
     throw new Error(`The time argument must be a number`);
   }
@@ -13,4 +13,8 @@ const subTime = (game, time) => {
   });
   return newGame;
 };
-export default subTime;
+export default subGameTime;
+
+// export const tick = (game) => {
+
+// }

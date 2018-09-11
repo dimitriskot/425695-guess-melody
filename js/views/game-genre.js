@@ -57,41 +57,5 @@ export default class GameGenreView extends GameView {
     });
   }
 
-  checkAnswers(answers) {
-    const userAnswers = [...answers].filter((answer) => answer.checked === true);
-    const isSuccess = userAnswers.every((answer) => this.level.tracks[answer.id].isCorrect);
-    return isSuccess;
-  }
-
-  toggleSubmitButtonDisabled(answer, answers, button) {
-    if (answer.checked) {
-      button.disabled = false;
-    } else if (!answers.some((el) => el.checked)) {
-      button.disabled = true;
-    }
-  }
-
-  submitAnswer() {
-    console.log(e);
-    // e.preventDefault();
-    // const userAnswers = [...answers].filter((answer) => answer.checked === true);
-    // const isSuccess = userAnswers.every((answer) => this.level.tracks[answer.id].isCorrect);
-    // return isSuccess;
-    // super.getLevelResult(this.game, isSuccess);
-  }
-
-  onPlayButtonClick(e, buttons) {
-    const currentButton = e.target;
-    const currentAudio = currentButton.nextElementSibling.querySelector(`audio`);
-    buttons.forEach((button) => {
-      if (button !== currentButton) {
-        button.classList.remove(`track__button--pause`);
-        const audio = button.nextElementSibling.querySelector(`audio`);
-        audio.classList.remove(`active`);
-        audio.pause();
-      }
-    });
-    super.toggleAudio(currentAudio);
-    super.togglePlayButton(currentButton);
-  }
+  toggleSubmitButtonDisabled() {}
 }
