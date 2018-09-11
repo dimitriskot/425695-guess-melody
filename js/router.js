@@ -1,10 +1,10 @@
 import {selectTemplate} from "./components/util";
 import WelcomeView from "./views/welcome";
-import StatsView from "./views/stats";
-import FailView from "./views/fail";
+import StatsView from "./views/results/stats";
+import FailView from "./views/results/fail";
 import GamePresenter from "./presenters/game";
 import GameModel from "./models/game";
-// import StatsScreen from './stats/stats-screen.js';
+import ConfirmView from "./views/modals/modal-confirm";
 
 export default class Router {
 
@@ -27,5 +27,10 @@ export default class Router {
   static showFail(data) {
     const fail = new FailView(data);
     selectTemplate(fail.element);
+  }
+
+  static showConfirm(game) {
+    const confirm = new ConfirmView(game);
+    selectTemplate(confirm.element);
   }
 }

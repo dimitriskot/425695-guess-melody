@@ -1,0 +1,55 @@
+import AbstractView from "../common/abstract";
+import {getDom} from "../../components/util";
+import {CONFIRM} from "../../data/constants";
+import {currentGame} from "../../data/initial-game";
+import Router from "../../router";
+
+export default class ConfirmView extends AbstractView {
+  constructor(game) {
+    super();
+    this.game = game;
+  }
+
+  get template() {
+    return `<button class="modal__close" type="button"><span class="visually-hidden">Закрыть</span></button>
+      <h2 class="modal__title">Подтверждение</h2>
+      <p class="modal__text">Вы уверены что хотите начать игру заново?</p>
+      <div class="modal__buttons">
+        <button class="modal__button button">Ок</button>
+        <button class="modal__button button">Отмена</button>
+      </div>`;
+  }
+
+  get element() {
+    if (this._element) {
+      return this._element;
+    }
+    this._element = this.render();
+    this.bind(this._element);
+    return this._element;
+  }
+
+  render() {
+    return getDom(this.template, [`modal`]);
+  }
+
+  bind() {
+    const closeButton = this._element.querySelector(`.modal__close`);
+    closeButton.addEventListener(`click`, (e) => {
+      e.preventDefault();
+      Router.showGame(this.game);
+    });
+    const modalButtons = this._element.querySelectorAll(`.modal__button`);
+    modalButtons.forEach((button) => button.addEventListener(`click`, (e) => {
+      e.preventDefault();
+      if (e.target.innerText === CONFIRM.ok) {
+        Router.showGame(currentGame);
+        return;
+      }
+      if (e.target.innerText === CONFIRM.cancel) {
+        Router.showGame(this.game);
+        return;
+      }
+    }));
+  }
+}

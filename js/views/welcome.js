@@ -1,6 +1,5 @@
 import {getDom} from "../components/util";
-// import {startGame} from "../game-logic/start-game";
-import AbstractView from "./common/abstract-view";
+import AbstractView from "./common/abstract";
 import Router from "../router";
 
 export default class WelcomeView extends AbstractView {

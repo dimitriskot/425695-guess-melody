@@ -17,3 +17,7 @@ export const FAILS = {
     message: `У вас закончились все попытки. Ничего, повезёт в следующий раз!`
   }
 };
+export const CONFIRM = {
+  ok: `Ок`,
+  cancel: `Отмена`
+};

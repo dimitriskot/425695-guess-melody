@@ -1,7 +1,7 @@
-import AbstractView from "./common/abstract-view";
-import {getDom} from "../components/util";
-import {currentGame} from "../data/initial-game";
-import Router from "../router";
+import AbstractView from "../common/abstract";
+import {getDom} from "../../components/util";
+import {currentGame} from "../../data/initial-game";
+import Router from "../../router";
 
 export default class FailView extends AbstractView {
   constructor(fail) {

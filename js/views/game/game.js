@@ -1,5 +1,5 @@
-import AbstractView from "./common/abstract-view";
-import {getDom} from "../components/util";
+import AbstractView from "../common/abstract";
+import {getDom} from "../../components/util";
 
 export default class GameView extends AbstractView {
   get template() {

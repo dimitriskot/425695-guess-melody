@@ -1,8 +1,8 @@
 import {SECOND_MS, HALF_MINUTE_MS, CLASSES} from "../data/constants";
-import GameView from "../views/game";
+import GameView from "../views/game/game";
 import HeaderView from "../views/header";
-import GameGenreView from "../views/game-genre";
-import GameArtistView from "../views/game-artist";
+import GameGenreView from "../views/game/game-genre";
+import GameArtistView from "../views/game/game-artist";
 
 export default class GamePresenter {
   constructor(model) {

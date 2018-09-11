@@ -1,5 +1,5 @@
 import GameView from "./game";
-import {getDom} from "../components/util";
+import {getDom} from "../../components/util";
 
 export default class GameArtistView extends GameView {
   constructor(game, level) {

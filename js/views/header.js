@@ -1,8 +1,7 @@
-import AbstractView from "./common/abstract-view";
+import AbstractView from "./common/abstract";
 import {LIVES} from "../data/constants";
-import {getDom, selectTemplate} from "../components/util";
-import WelcomeView from "../components/welcome";
-import {currentGame} from "../data/initial-game";
+import {getDom} from "../components/util";
+import Router from "../router";
 
 export default class HeaderView extends AbstractView {
   constructor(game) {
@@ -52,7 +51,6 @@ export default class HeaderView extends AbstractView {
 
   bind() {
     const gameBack = this._element.querySelector(`.game__back`);
-    const welcome = new WelcomeView(currentGame);
-    gameBack.addEventListener(`click`, () => selectTemplate(welcome.element));
+    gameBack.addEventListener(`click`, () => Router.showConfirm(this.game));
   }
 }
