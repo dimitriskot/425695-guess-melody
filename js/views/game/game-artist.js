@@ -10,17 +10,17 @@ export default class GameArtistView extends GameView {
 
   get template() {
     return `<section class="game__screen">
-    <h2 class="game__title">${this.level.title}</h2>
+    <h2 class="game__title">${this.level.question}</h2>
     <div class="game__track">
       <button class="track__button track__button--play" type="button"></button>
-      <audio src="${this.level.tracks.find((item) => item.isCorrect).src}"></audio>
+      <audio src="${this.level.src}"></audio>
       </div>
     <form class="game__artist">
-      ${this.level.tracks.map((track, id) => `<div class="artist">
-        <input class="artist__input visually-hidden" type="radio" name="answer" value="${track.artist}" id="${id}">
+      ${this.level.answers.map((track, id) => `<div class="artist">
+        <input class="artist__input visually-hidden" type="radio" name="answer" value="${track.title}" id="${id}">
         <label class="artist__name" for="${id}">
-          <img class="artist__picture" src="${track.image}" alt="${track.artist}">
-          ${track.artist}
+          <img class="artist__picture" src="${track.image.url}" alt="${track.title}">
+          ${track.title}
         </label>
         </div>`).join(``)}
     </form>

@@ -1,6 +1,6 @@
-import {getDom} from "../components/util";
-import AbstractView from "./common/abstract";
 import Router from "../router";
+import AbstractView from "./common/abstract";
+import {getDom} from "../components/util";
 
 export default class WelcomeView extends AbstractView {
   constructor(game) {

@@ -1,7 +1,7 @@
-import AbstractView from "../common/abstract";
-import {getDom} from "../../components/util";
-import {currentGame} from "../../data/initial-game";
 import Router from "../../router";
+import AbstractView from "../common/abstract";
+import {currentGame} from "../../data/initial-game";
+import {getDom} from "../../components/util";
 
 export default class StatsView extends AbstractView {
   constructor(results) {

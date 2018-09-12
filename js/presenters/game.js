@@ -1,6 +1,6 @@
 import {SECOND_MS, CLASSES} from "../data/constants";
-import GameView from "../views/game/game";
 import HeaderView from "../views/header";
+import GameView from "../views/game/game";
 import GameGenreView from "../views/game/game-genre";
 import GameArtistView from "../views/game/game-artist";
 
@@ -82,10 +82,10 @@ export default class GamePresenter {
     let isSuccess;
     if (this.isGenre(this.data)) {
       const userAnswers = [...answers].filter((answer) => answer.checked === true);
-      isSuccess = userAnswers.every((answer) => this.data.tracks[answer.id].isCorrect);
+      isSuccess = userAnswers.every((answer) => this.data.answers[answer.id].genre === this.data.genre);
     } else {
       const answer = e.target;
-      isSuccess = this.data.tracks[answer.id].isCorrect;
+      isSuccess = this.data.answers[answer.id].isCorrect;
     }
     this.updateGameData(isSuccess);
     this.getLevelResult();
@@ -141,16 +141,14 @@ export default class GamePresenter {
   updateGameData(isSuccess) {
     this.model.playerAnswer(isSuccess);
     this.model.clearLevelTime();
-    if (isSuccess) {
-      this.model.subLevels();
-    } else {
+    if (!isSuccess) {
       this.model.subLives();
     }
   }
 
   getLevelResult() {
     this.stopGame();
-    if (!this.model.isLevelsOver() && !this.model.isLoser()) {
+    if (!this.model.isLevelsOver(this.data) && !this.model.isLoser()) {
       this.model.nextLevel();
       this.data = this.model.getCurrentLevelData();
       this.getLevelView();

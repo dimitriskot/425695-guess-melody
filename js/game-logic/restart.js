@@ -1,6 +1,6 @@
-import {currentGame} from "../data/initial-game";
-import {CONFIRM} from "../data/constants";
 import Router from "../router";
+import {CONFIRM} from "../data/constants";
+import {currentGame} from "../data/initial-game";
 
 export const getConfirm = (game, e) => {
   if (e.target.innerText === CONFIRM.ok) {

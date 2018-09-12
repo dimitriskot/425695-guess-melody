@@ -1,9 +1,4 @@
-const LIVES = 3;
-const SECOND_MS = 1000;
-const FAST_RIGHT_ANSWER_TIME = SECOND_MS * 30;
-const GRADE = 1;
-const BONUS_GRADE = 2;
-const FAIL_GRADE = 2;
+import {LIVES, FAST_RIGHT_ANSWER_TIME, GRADE} from "../data/constants";
 
 const getScoreCount = (game) => {
   let score = {
@@ -15,7 +10,7 @@ const getScoreCount = (game) => {
     .map((answer) => {
       let gradesForAnswer = 0;
       if (answer.isSuccess && answer.time >= FAST_RIGHT_ANSWER_TIME) {
-        gradesForAnswer = GRADE;
+        gradesForAnswer = GRADE.usual;
       }
       return gradesForAnswer;
     })
@@ -24,17 +19,18 @@ const getScoreCount = (game) => {
     .map((answer) => {
       let gradesForAnswer = 0;
       if (answer.isSuccess && answer.time < FAST_RIGHT_ANSWER_TIME) {
-        gradesForAnswer = BONUS_GRADE;
+        gradesForAnswer = GRADE.bonus;
       }
       return gradesForAnswer;
     })
     .reduce((a, b) => a + b);
     const fails = LIVES - game.lives;
-    const gradesForFails = fails * FAIL_GRADE;
+    const gradesForFails = fails * GRADE.fail;
     const total = gradesForAnswers + gradesForFastAnswers - gradesForFails;
+    const fast = gradesForFastAnswers - gradesForFails;
     score = {
       total,
-      fast: gradesForFastAnswers
+      fast
     };
   } else {
     score = -1;

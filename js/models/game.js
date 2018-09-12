@@ -1,15 +1,15 @@
-import {getLevelData} from "../data/levels";
 import Router from "../router";
+import getLevelData from "../game-logic/level-data";
 import levelChange from "../game-logic/level-change";
-import subLevelsCount from "../game-logic/levels-count";
 import getPlayerAnswer from "../game-logic/player-answer";
 import subPlayerLives from "../game-logic/player-lives";
 import {subGameTime, calcLevelTime, clearLevelTime} from "../game-logic/timer";
 import getGameResults from "../game-logic/game-results";
 
 export default class GameModel {
-  constructor(game) {
+  constructor(game, data) {
     this.game = game;
+    this.data = data;
     this.init();
   }
 
@@ -17,12 +17,12 @@ export default class GameModel {
     return Object.freeze(this._state);
   }
 
-  nextLevel() {
-    this._state = levelChange(this._state, this._state.level + 1);
+  init() {
+    this._state = this.game;
   }
 
-  subLevels() {
-    this._state = subLevelsCount(this._state);
+  nextLevel() {
+    this._state = levelChange(this._state, this._state.level + 1);
   }
 
   playerAnswer(isSuccess) {
@@ -49,10 +49,6 @@ export default class GameModel {
     this._state = getGameResults(this._state, [6, 7, 8, 9]);
   }
 
-  init() {
-    this._state = this.game;
-  }
-
   showConfirm() {
     Router.showConfirm(this._state);
   }
@@ -61,8 +57,8 @@ export default class GameModel {
     return this._state.lives <= 0;
   }
 
-  isLevelsOver() {
-    return this._state.levelsCount <= 0;
+  isLevelsOver(level) {
+    return this.data.indexOf(level) === this.data.length - 1;
   }
 
   isTimeOver() {
@@ -70,6 +66,6 @@ export default class GameModel {
   }
 
   getCurrentLevelData() {
-    return getLevelData(this._state.level);
+    return getLevelData(this.data, this._state.level);
   }
 }
