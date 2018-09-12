@@ -1,4 +1,5 @@
 import Router from "../router";
+import {HALF_MINUTE_MS} from "../data/constants";
 import getLevelData from "../game-logic/level-data";
 import levelChange from "../game-logic/level-change";
 import getPlayerAnswer from "../game-logic/player-answer";
@@ -59,6 +60,10 @@ export default class GameModel {
 
   isLevelsOver(level) {
     return this.data.indexOf(level) === this.data.length - 1;
+  }
+
+  isTimeLess() {
+    return this._state.time.total <= HALF_MINUTE_MS;
   }
 
   isTimeOver() {

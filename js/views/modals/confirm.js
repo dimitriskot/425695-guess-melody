@@ -1,4 +1,5 @@
 import AbstractView from "../common/abstract";
+import {CLASSES} from "../../data/constants";
 import {getDom} from "../../components/util";
 
 export default class ConfirmView extends AbstractView {
@@ -27,7 +28,7 @@ export default class ConfirmView extends AbstractView {
   }
 
   render() {
-    return getDom(this.template, [`modal`]);
+    return getDom(this.template, CLASSES.modal);
   }
 
   bind() {

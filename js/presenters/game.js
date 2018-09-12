@@ -1,4 +1,4 @@
-import {SECOND_MS, CLASSES} from "../data/constants";
+import {SECOND_MS, CLASSES, QUESTION_TYPE} from "../data/constants";
 import HeaderView from "../views/header";
 import GameView from "../views/game/game";
 import GameGenreView from "../views/game/game-genre";
@@ -25,7 +25,7 @@ export default class GamePresenter {
   }
 
   isGenre(level) {
-    return level.type === `genre`;
+    return level.type === QUESTION_TYPE.genre;
   }
 
   getLevelView() {
@@ -71,6 +71,10 @@ export default class GamePresenter {
     this.root.element.replaceChild(header.element, this.header.element);
     this.header = header;
     this.header.onGameBackButtonClick = this.onGameBackButtonClick.bind(this);
+    if (this.model.isTimeLess()) {
+      const timer = this.header.element.querySelector(`.timer__value`);
+      timer.classList.add(`timer__value--finished`);
+    }
   }
 
   changeContentView(view) {

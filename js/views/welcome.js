@@ -1,5 +1,6 @@
 import Router from "../router";
 import AbstractView from "./common/abstract";
+import {CLASSES} from "../data/constants";
 import {getDom} from "../components/util";
 
 export default class WelcomeView extends AbstractView {
@@ -30,7 +31,7 @@ export default class WelcomeView extends AbstractView {
   }
 
   render() {
-    return getDom(this.template, [`welcome`]);
+    return getDom(this.template, CLASSES.welcome);
   }
 
   bind() {
