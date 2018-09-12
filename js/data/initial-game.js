@@ -1,12 +1,15 @@
-import {MINUTE_MS} from "./constants";
+import {GAME_TIME, LEVELS_COUNT, LIVES} from "./constants";
 
 export const initialState = Object.freeze({
   level: 0,
-  levelsCount: 10,
-  lives: 3,
-  time: MINUTE_MS * 5,
+  levelsCount: LEVELS_COUNT,
+  lives: LIVES,
+  time: {
+    total: GAME_TIME,
+    level: 0
+  },
   answerTemplate: {
-    success: null,
+    isSuccess: null,
     time: null
   },
   answers: []

@@ -12,8 +12,8 @@ export default class StatsView extends AbstractView {
   get template() {
     return `<div class="result__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
     <h2 class="result__title">Вы настоящий меломан!</h2>
-    <p class="result__total">За 3 минуты и 25 секунд вы набрали 12 баллов (8 быстрых), совершив 3 ошибки</p>
-    <p class="result__text">Вы заняли ${this.results.position} место из ${this.results.places}. Это лучше, чем у ${this.results.percent}% игроков
+    <p class="result__total">${this.renderProgressText(this.results.progress)}</p>
+    <p class="result__text">Вы заняли ${this.results.stats.position} место из ${this.results.stats.places}. Это лучше, чем у ${this.results.stats.percent}% игроков
     </p>
     <button class="result__replay" type="button">Сыграть ещё раз</button>`;
   }
@@ -35,4 +35,6 @@ export default class StatsView extends AbstractView {
     const replayButton = this._element.querySelector(`.result__replay`);
     replayButton.addEventListener(`click`, () => Router.showGame(currentGame));
   }
+
+  renderProgressText() {}
 }

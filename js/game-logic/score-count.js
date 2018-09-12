@@ -6,12 +6,15 @@ const BONUS_GRADE = 2;
 const FAIL_GRADE = 2;
 
 const getScoreCount = (game) => {
-  let score;
+  let score = {
+    total: 0,
+    fast: 0
+  };
   if (game.answers.length !== 0) {
     const gradesForAnswers = game.answers
     .map((answer) => {
       let gradesForAnswer = 0;
-      if (answer.success && answer.time >= FAST_RIGHT_ANSWER_TIME) {
+      if (answer.isSuccess && answer.time >= FAST_RIGHT_ANSWER_TIME) {
         gradesForAnswer = GRADE;
       }
       return gradesForAnswer;
@@ -20,7 +23,7 @@ const getScoreCount = (game) => {
     const gradesForFastAnswers = game.answers
     .map((answer) => {
       let gradesForAnswer = 0;
-      if (answer.success && answer.time < FAST_RIGHT_ANSWER_TIME) {
+      if (answer.isSuccess && answer.time < FAST_RIGHT_ANSWER_TIME) {
         gradesForAnswer = BONUS_GRADE;
       }
       return gradesForAnswer;
@@ -28,8 +31,11 @@ const getScoreCount = (game) => {
     .reduce((a, b) => a + b);
     const fails = LIVES - game.lives;
     const gradesForFails = fails * FAIL_GRADE;
-    const grades = gradesForAnswers + gradesForFastAnswers;
-    score = gradesForFails ? -1 : grades;
+    const total = gradesForAnswers + gradesForFastAnswers - gradesForFails;
+    score = {
+      total,
+      fast: gradesForFastAnswers
+    };
   } else {
     score = -1;
   }

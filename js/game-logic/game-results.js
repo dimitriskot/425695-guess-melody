@@ -1,9 +1,9 @@
-import {getPlayerProgress} from "./player-progress";
+import {getPlayerProgress, getDetailedPlayerProgress} from "./player-progress";
 import {FAILS} from "../data/constants";
 import Router from "../router";
 
-const getGameResults = (progress, statistics) => {
-  const playerProgress = getPlayerProgress(progress);
+const getGameResults = (game, statistics) => {
+  const playerProgress = getPlayerProgress(game);
   if (playerProgress.time <= 0) {
     Router.showFail(FAILS.time);
     return;
@@ -18,10 +18,15 @@ const getGameResults = (progress, statistics) => {
   const playerPosition = newStatistics.indexOf(playerProgress.score) + 1;
   const worstStatistics = newStatistics.slice(playerPosition);
   const worstPercent = (100 * worstStatistics.length / newStatistics.length).toFixed(0);
-  const results = {
+  const stats = {
     position: playerPosition,
     places: newStatistics.length,
     percent: worstPercent
+  };
+  const progress = getDetailedPlayerProgress(game);
+  const results = {
+    progress,
+    stats
   };
   Router.showStats(results);
 };

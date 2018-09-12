@@ -2,6 +2,8 @@ export const SECOND_MS = 1000;
 export const MINUTE_MS = SECOND_MS * 60;
 export const HALF_MINUTE_MS = MINUTE_MS / 2;
 export const LIVES = 3;
+export const GAME_TIME = MINUTE_MS * 5;
+export const LEVELS_COUNT = 10;
 export const CLASSES = {
   welcome: [`welcome`],
   genre: [`game--genre`],

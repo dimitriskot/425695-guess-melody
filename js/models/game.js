@@ -4,7 +4,7 @@ import levelChange from "../game-logic/level-change";
 import subLevelsCount from "../game-logic/levels-count";
 import getPlayerAnswer from "../game-logic/player-answer";
 import subPlayerLives from "../game-logic/player-lives";
-import subGameTime from "../game-logic/timer";
+import {subGameTime, calcLevelTime, clearLevelTime} from "../game-logic/timer";
 import getGameResults from "../game-logic/game-results";
 
 export default class GameModel {
@@ -25,16 +25,24 @@ export default class GameModel {
     this._state = subLevelsCount(this._state);
   }
 
-  playerAnswer(isSuccess, time) {
-    this._state = getPlayerAnswer(this._state, isSuccess, time);
+  playerAnswer(isSuccess) {
+    this._state = getPlayerAnswer(this._state, isSuccess);
   }
 
   subLives() {
     this._state = subPlayerLives(this._state);
   }
 
-  subTime(time) {
+  subGameTime(time) {
     this._state = subGameTime(this._state, time);
+  }
+
+  calcLevelTime(time) {
+    this._state = calcLevelTime(this._state, time);
+  }
+
+  clearLevelTime() {
+    this._state = clearLevelTime(this._state);
   }
 
   gameResults() {
@@ -58,7 +66,7 @@ export default class GameModel {
   }
 
   isTimeOver() {
-    return this._state.time <= 0;
+    return this._state.time.total <= 0;
   }
 
   getCurrentLevelData() {

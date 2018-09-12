@@ -7,8 +7,8 @@ export default class HeaderView extends AbstractView {
   constructor(game) {
     super();
     this.game = game;
-    this.timeMinutes = new Date(this.game.time).getMinutes();
-    this.timeSeconds = new Date(this.game.time).getSeconds();
+    this.timeMinutes = new Date(this.game.time.total).getMinutes();
+    this.timeSeconds = new Date(this.game.time.total).getSeconds();
   }
 
   get template() {

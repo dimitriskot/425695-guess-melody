@@ -1,4 +1,4 @@
-import {SECOND_MS, HALF_MINUTE_MS, CLASSES} from "../data/constants";
+import {SECOND_MS, CLASSES} from "../data/constants";
 import GameView from "../views/game/game";
 import HeaderView from "../views/header";
 import GameGenreView from "../views/game/game-genre";
@@ -18,23 +18,18 @@ export default class GamePresenter {
     this.root.element.appendChild(this.content.element);
 
     this._interval = null;
-    // this.resetLevelTime();
   }
 
   get element() {
     return this.root.element;
   }
 
-  isGenre() {
-    return this.data.type === `genre`;
+  isGenre(level) {
+    return level.type === `genre`;
   }
 
   getLevelView() {
-    this.LevelView = this.isGenre() ? GameGenreView : GameArtistView;
-  }
-
-  resetLevelTime() {
-    this._levelTime = 0;
+    this.LevelView = this.isGenre(this.data) ? GameGenreView : GameArtistView;
   }
 
   stopGame() {
@@ -50,9 +45,8 @@ export default class GamePresenter {
         this.model.gameResults();
         return;
       }
-      this._levelTime = this._levelTime + SECOND_MS;
-      console.log(this._levelTime);
-      this.model.subTime(SECOND_MS);
+      this.model.subGameTime(SECOND_MS);
+      this.model.calcLevelTime(SECOND_MS);
       this.updateHeader();
     }, SECOND_MS);
   }
@@ -67,7 +61,7 @@ export default class GamePresenter {
     this.content.togglePlayButton = this.togglePlayButton.bind(this);
     this.content.onPlayButtonClick = this.onPlayButtonClick.bind(this);
 
-    if (this.content.level.type === `genre`) {
+    if (this.isGenre(this.content.level)) {
       this.content.toggleSubmitButtonDisabled = this.toggleSubmitButtonDisabled.bind(this);
     }
   }
@@ -86,7 +80,7 @@ export default class GamePresenter {
 
   submitAnswer(e, answers) {
     let isSuccess;
-    if (this.isGenre()) {
+    if (this.isGenre(this.data)) {
       const userAnswers = [...answers].filter((answer) => answer.checked === true);
       isSuccess = userAnswers.every((answer) => this.data.tracks[answer.id].isCorrect);
     } else {
@@ -122,7 +116,7 @@ export default class GamePresenter {
   onPlayButtonClick(e, buttons) {
     const currentButton = e.target;
     let currentAudio;
-    if (this.isGenre()) {
+    if (this.isGenre(this.data)) {
       currentAudio = currentButton.nextElementSibling.querySelector(`audio`);
       buttons.forEach((button) => {
         if (button !== currentButton) {
@@ -145,9 +139,8 @@ export default class GamePresenter {
   }
 
   updateGameData(isSuccess) {
-    this.model.playerAnswer(isSuccess, this._levelTime);
-    this.resetLevelTime();
-    this._levelTime = 0;
+    this.model.playerAnswer(isSuccess);
+    this.model.clearLevelTime();
     if (isSuccess) {
       this.model.subLevels();
     } else {

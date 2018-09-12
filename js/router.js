@@ -1,10 +1,11 @@
 import {selectTemplate} from "./components/util";
 import WelcomeView from "./views/welcome";
-import StatsView from "./views/results/stats";
 import FailView from "./views/results/fail";
 import GamePresenter from "./presenters/game";
+import StatsPresenter from "./presenters/stats";
 import ConfirmPresenter from "./presenters/confirm";
 import GameModel from "./models/game";
+import StatsModel from "./models/stats";
 import ConfirmModel from "./models/confirm";
 
 export default class Router {
@@ -21,7 +22,8 @@ export default class Router {
   }
 
   static showStats(data) {
-    const stats = new StatsView(data);
+    const stats = new StatsPresenter(new StatsModel(data));
+    stats.render();
     selectTemplate(stats.element);
   }
 
@@ -32,7 +34,7 @@ export default class Router {
 
   static showConfirm(game) {
     const confirm = new ConfirmPresenter(new ConfirmModel(game));
-    selectTemplate(confirm.element);
     confirm.render();
+    selectTemplate(confirm.element);
   }
 }
