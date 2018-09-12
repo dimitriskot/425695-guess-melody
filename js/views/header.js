@@ -1,7 +1,6 @@
 import AbstractView from "./common/abstract";
 import {LIVES} from "../data/constants";
 import {getDom} from "../components/util";
-// import Router from "../router";
 
 export default class HeaderView extends AbstractView {
   constructor(game) {

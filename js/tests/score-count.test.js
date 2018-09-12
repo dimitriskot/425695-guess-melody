@@ -15,10 +15,10 @@ describe(`Counting player's game score`, () => {
   it(`right answers: 9, of them fast answers: 5, wrong answers: 0, notes left: 3. time is out sholud return score: 14`, () => {
     assert.equal(14, getScoreCount(results[3]).total);
   });
-  it(`right answers: 9, of them fast answers: 0, wrong answers: 1, notes left: 0. sholud return score: -1`, () => {
-    assert.equal(-1, getScoreCount(results[4]));
+  it(`right answers: 9, of them fast answers: 0, wrong answers: 1, notes left: 0. sholud return score: 7`, () => {
+    assert.equal(7, getScoreCount(results[4]).total);
   });
-  it(`right answers: 9, of them fast answers: 5, wrong answers: 1, notes left: 0. sholud return score: -1`, () => {
-    assert.equal(-1, getScoreCount(results[4]));
+  it(`right answers: 9, of them fast answers: 5, wrong answers: 1, notes left: 0. sholud return score: 12`, () => {
+    assert.equal(12, getScoreCount(results[5]).total);
   });
 });

@@ -25,7 +25,7 @@ const renderProgressText = (data) => {
       mistakes = key;
     }
   });
-  return `За ${data.time.minutes} ${minutes} и ${data.time.seconds} ${seconds} вы набрали ${data.score.total} баллов (${data.score.fast} ${fast}), совершив ${data.mistakes} ${mistakes}`;
+  return `За ${data.time.minutes ? `${data.time.minutes} ${minutes} и` : ``} ${data.time.seconds} ${seconds} вы набрали ${data.score.total} баллов (${data.score.fast} ${fast}), ${data.mistakes ? `совершив ${data.mistakes}` : `не совершив`} ${mistakes}`;
 };
 
 export default renderProgressText;

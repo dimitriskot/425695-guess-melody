@@ -2,43 +2,43 @@ export const results = [
   {
     answers: [
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       }
     ],
@@ -48,43 +48,43 @@ export const results = [
   {
     answers: [
       {
-        success: true,
+        isSuccess: true,
         time: 20000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 20000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 20000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 20000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 20000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       }
     ],
@@ -94,43 +94,43 @@ export const results = [
   {
     answers: [
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: null,
+        isSuccess: null,
         time: 30001
       }
     ],
@@ -140,43 +140,43 @@ export const results = [
   {
     answers: [
       {
-        success: true,
+        isSuccess: true,
         time: 20000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 20000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 20000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 20000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 20000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: null,
+        isSuccess: null,
         time: 80001
       }
     ],
@@ -186,116 +186,116 @@ export const results = [
   {
     answers: [
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: false,
+        isSuccess: false,
         time: 30000
       }
     ],
-    lives: 0,
+    lives: 2,
     time: 0
   },
   {
     answers: [
       {
-        success: true,
+        isSuccess: true,
         time: 20000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 20000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 20000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 20000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 20000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: false,
+        isSuccess: false,
         time: 30000
       }
     ],
-    lives: 0,
+    lives: 2,
     time: 50000
   },
   // data for player lives test
   {
     answers: [
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       }
     ],
@@ -305,23 +305,23 @@ export const results = [
   {
     answers: [
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: false,
+        isSuccess: false,
         time: 30000
       }
     ],
@@ -331,23 +331,23 @@ export const results = [
   {
     answers: [
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: false,
+        isSuccess: false,
         time: 30000
       },
       {
-        success: false,
+        isSuccess: false,
         time: 30000
       }
     ],
@@ -357,23 +357,23 @@ export const results = [
   {
     answers: [
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: false,
+        isSuccess: false,
         time: 30000
       }
     ],
@@ -383,19 +383,19 @@ export const results = [
   {
     answers: [
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: false,
+        isSuccess: false,
         time: 30000
       }
     ],
@@ -405,19 +405,19 @@ export const results = [
   {
     answers: [
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: false,
+        isSuccess: false,
         time: 30000
       },
       {
-        success: false,
+        isSuccess: false,
         time: 30000
       }
     ],
@@ -427,19 +427,19 @@ export const results = [
   {
     answers: [
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: true,
+        isSuccess: true,
         time: 30000
       },
       {
-        success: false,
+        isSuccess: false,
         time: 30000
       },
       {
-        success: false,
+        isSuccess: false,
         time: 30000
       }
     ],
