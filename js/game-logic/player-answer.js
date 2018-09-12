@@ -1,12 +1,10 @@
-const getPlayerAnswer = (game, isSuccess, time) => {
+const getPlayerAnswer = (game, isSuccess) => {
   if (typeof isSuccess !== `boolean`) {
     throw new Error(`ERROR! "isSuccess" must be a boolean value`);
   }
-  if (typeof time !== `number`) {
-    throw new Error(`ERROR! "time" must be a number value`);
-  }
+  const time = game.time.level;
   const answer = Object.assign({}, game.answerTemplate, {
-    success: isSuccess,
+    isSuccess,
     time
   });
   const answers = game.answers.slice();

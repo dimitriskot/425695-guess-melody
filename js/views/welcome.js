@@ -1,6 +1,6 @@
-import {getDom} from "./util";
-import {playGame} from "../game-logic/game";
-import AbstractView from "./common/abstract-view";
+import {getDom} from "../components/util";
+import AbstractView from "./common/abstract";
+import Router from "../router";
 
 export default class WelcomeView extends AbstractView {
   constructor(game) {
@@ -35,6 +35,6 @@ export default class WelcomeView extends AbstractView {
 
   bind() {
     const startGameButton = this._element.querySelector(`.welcome__button`);
-    startGameButton.addEventListener(`click`, () => playGame(this.game));
+    startGameButton.addEventListener(`click`, () => Router.showGame(this.game));
   }
 }

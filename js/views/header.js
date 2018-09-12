@@ -1,13 +1,13 @@
-import AbstractView from "./abstract-view";
-import {LIVES} from "../../data/constants";
-import {getDom, selectTemplate} from "../util";
-import WelcomeView from "../welcome";
-import {currentGame} from "../../data/initial-game";
+import AbstractView from "./common/abstract";
+import {LIVES} from "../data/constants";
+import {getDom} from "../components/util";
 
 export default class HeaderView extends AbstractView {
   constructor(game) {
     super();
     this.game = game;
+    this.timeMinutes = new Date(this.game.time.total).getMinutes();
+    this.timeSeconds = new Date(this.game.time.total).getSeconds();
   }
 
   get template() {
@@ -23,9 +23,9 @@ export default class HeaderView extends AbstractView {
     </svg>
 
     <div class="timer__value" xmlns="http://www.w3.org/1999/xhtml">
-      <span class="timer__mins">05</span>
+      <span class="timer__mins">${this.timeMinutes < 10 ? `0${this.timeMinutes}` : this.timeMinutes}</span>
       <span class="timer__dots">:</span>
-      <span class="timer__secs">00</span>
+      <span class="timer__secs">${this.timeSeconds < 10 ? `0${this.timeSeconds}` : this.timeSeconds}</span>
     </div>
 
     <div class="game__mistakes">
@@ -49,8 +49,12 @@ export default class HeaderView extends AbstractView {
   }
 
   bind() {
-    const gameBack = this._element.querySelector(`.game__back`);
-    const welcome = new WelcomeView(currentGame);
-    gameBack.addEventListener(`click`, () => selectTemplate(welcome.element));
+    const gameBackButton = this._element.querySelector(`.game__back`);
+    gameBackButton.addEventListener(`click`, (e) => {
+      e.preventDefault();
+      this.onGameBackButtonClick();
+    });
   }
+
+  onGameBackButtonClick() {}
 }
