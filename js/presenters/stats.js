@@ -3,7 +3,7 @@ import StatsView from "../views/results/stats";
 export default class StatsPresenter {
   constructor(model) {
     this.model = model;
-    this.stats = new StatsView(this.model.state);
+    this.stats = new StatsView(this.model.result);
   }
 
   get element() {

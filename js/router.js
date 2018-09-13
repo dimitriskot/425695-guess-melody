@@ -14,6 +14,7 @@ export default class Router {
 
   constructor() {
     this.data = null;
+    this.stats = null;
   }
 
   static start() {
@@ -36,8 +37,13 @@ export default class Router {
     gameScreen.startGame();
   }
 
-  static showStats(data) {
-    const stats = new StatsPresenter(new StatsModel(data));
+  static showStats(game) {
+    Loader.loadResults().
+      then((stats) => {
+        this.stats = stats;
+      }).
+      catch(Router.showError);
+    const stats = new StatsPresenter(new StatsModel(game, this.stats));
     stats.render();
     selectTemplate(stats.element);
   }

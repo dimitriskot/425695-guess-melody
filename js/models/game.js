@@ -5,7 +5,7 @@ import levelChange from "../game-logic/level-change";
 import getPlayerAnswer from "../game-logic/player-answer";
 import subPlayerLives from "../game-logic/player-lives";
 import {subGameTime, calcLevelTime, clearLevelTime} from "../game-logic/timer";
-import getGameResults from "../game-logic/game-results";
+import getResults from "../game-logic/game-results";
 
 export default class GameModel {
   constructor(game, data) {
@@ -47,7 +47,7 @@ export default class GameModel {
   }
 
   gameResults() {
-    this._state = getGameResults(this._state, [6, 7, 8, 9]);
+    getResults(this._state);
   }
 
   showConfirm() {

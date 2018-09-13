@@ -7,14 +7,15 @@ import {getDom} from "../../components/util";
 export default class StatsView extends AbstractView {
   constructor(results) {
     super();
-    this.results = results;
+    this.progress = results.describe.progress;
+    this.stats = results.describe.stats;
   }
 
   get template() {
     return `<div class="result__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
     <h2 class="result__title">Вы настоящий меломан!</h2>
-    <p class="result__total">${this.renderProgressText(this.results.progress)}</p>
-    <p class="result__text">Вы заняли ${this.results.stats.position} место из ${this.results.stats.places}. Это лучше, чем у ${this.results.stats.percent}% игроков
+    <p class="result__total">${this.renderProgressText(this.progress)}</p>
+    <p class="result__text">Вы заняли ${this.stats.position} место из ${this.stats.places}. Это лучше, чем у ${this.stats.percent}% игроков
     </p>
     <button class="result__replay" type="button">Сыграть ещё раз</button>`;
   }
