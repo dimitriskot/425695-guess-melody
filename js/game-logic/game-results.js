@@ -12,22 +12,6 @@ const getResults = (game) => {
     Router.showFail(FAILS.tries);
     return;
   }
-  // let newStatistics = statistics;
-  // newStatistics.push(playerProgress.score);
-  // newStatistics = newStatistics.sort((scoreA, scoreB) => scoreB - scoreA);
-  // const playerPosition = newStatistics.indexOf(playerProgress.score) + 1;
-  // const worstStatistics = newStatistics.slice(playerPosition);
-  // const worstPercent = (100 * worstStatistics.length / newStatistics.length).toFixed(0);
-  // const stats = {
-  //   position: playerPosition,
-  //   places: newStatistics.length,
-  //   percent: worstPercent
-  // };
-  // const progress = getDetailedPlayerProgress(game);
-  // const results = {
-  //   progress,
-  //   stats
-  // };
   Router.showStats(game);
 };
 
