@@ -1,5 +1,5 @@
-import getScoreCount from "./score-count";
 import {GAME_TIME, LIVES} from "../data/constants";
+import getScoreCount from "./score-count";
 
 export const getPlayerProgress = (game) => {
   const score = getScoreCount(game).total;

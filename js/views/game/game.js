@@ -1,4 +1,5 @@
 import AbstractView from "../common/abstract";
+import {CLASSES} from "../../data/constants";
 import {getDom} from "../../components/util";
 
 export default class GameView extends AbstractView {
@@ -16,7 +17,7 @@ export default class GameView extends AbstractView {
   }
 
   render() {
-    return getDom(this.template, [`game`]);
+    return getDom(this.template, CLASSES.game);
   }
 
   submitAnswer() {}

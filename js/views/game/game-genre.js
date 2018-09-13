@@ -10,9 +10,9 @@ export default class GameGenreView extends GameView {
 
   get template() {
     return `<section class="game__screen">
-    <h2 class="game__title">${this.level.title}</h2>
+    <h2 class="game__title">${this.level.question}</h2>
     <form class="game__tracks">
-      ${this.level.tracks.map((track, id) => `<div class="track">
+      ${this.level.answers.map((track, id) => `<div class="track">
           <button class="track__button track__button--play" type="button"></button>
           <div class="track__status">
           <audio src="${track.src}"></audio>

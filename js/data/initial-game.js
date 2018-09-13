@@ -1,8 +1,7 @@
-import {GAME_TIME, LEVELS_COUNT, LIVES} from "./constants";
+import {GAME_TIME, LIVES} from "./constants";
 
 export const initialState = Object.freeze({
   level: 0,
-  levelsCount: LEVELS_COUNT,
   lives: LIVES,
   time: {
     total: GAME_TIME,

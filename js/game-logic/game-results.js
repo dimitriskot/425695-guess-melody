@@ -1,10 +1,10 @@
-import {getPlayerProgress, getDetailedPlayerProgress} from "./player-progress";
-import {FAILS} from "../data/constants";
 import Router from "../router";
+import {FAILS} from "../data/constants";
+import {getPlayerProgress, getDetailedPlayerProgress} from "./player-progress";
 
 const getGameResults = (game, statistics) => {
   const playerProgress = getPlayerProgress(game);
-  if (playerProgress.time <= 0) {
+  if (playerProgress.time.total <= 0) {
     Router.showFail(FAILS.time);
     return;
   }
