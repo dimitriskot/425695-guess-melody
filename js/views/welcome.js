@@ -1,14 +1,8 @@
-import Router from "../router";
 import AbstractView from "./common/abstract";
 import {CLASSES} from "../data/constants";
 import {getDom} from "../components/util";
 
 export default class WelcomeView extends AbstractView {
-  constructor(game) {
-    super();
-    this.game = game;
-  }
-
   get template() {
     return `<div class="welcome__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
     <button class="welcome__button"><span class="visually-hidden">Начать игру</span></button>
@@ -36,6 +30,10 @@ export default class WelcomeView extends AbstractView {
 
   bind() {
     const startGameButton = this._element.querySelector(`.welcome__button`);
-    startGameButton.addEventListener(`click`, () => Router.showGame(this.game));
+    startGameButton.addEventListener(`click`, () => {
+      this.onStartGameButtonClick();
+    });
   }
+
+  onStartGameButtonClick() {}
 }

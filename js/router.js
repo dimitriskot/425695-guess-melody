@@ -1,45 +1,54 @@
 import {selectTemplate} from "./components/util";
-import {currentGame} from "./data/initial-game";
+import WelcomeModel from "./models/welcome";
 import GameModel from "./models/game";
 import StatsModel from "./models/stats";
 import ConfirmModel from "./models/confirm";
+import WelcomePresenter from "./presenters/welcome";
 import GamePresenter from "./presenters/game";
 import StatsPresenter from "./presenters/stats";
 import ConfirmPresenter from "./presenters/confirm";
-import WelcomeView from "./views/welcome";
 import FailView from "./views/results/fail";
+import ErrorView from "./views/modals/error";
 import Loader from "./game-logic/loader";
 
 export default class Router {
 
   constructor() {
     this.data = null;
-  }
 
-  static start() {
-    Loader.loadData().
-      then((data) => {
-        this.data = data;
-      }).
-      then(() => Router.showWelcome(currentGame)).
-      catch(Router.showError);
+    this.isDataLoaded = null;
   }
 
   static showWelcome(game) {
-    const welcome = new WelcomeView(game);
+    const welcome = new WelcomePresenter(new WelcomeModel(game));
+    welcome.render(this.isDataLoaded);
     selectTemplate(welcome.element);
+
+    this.isDataLoaded = false;
+    Loader.loadData().
+      then((data) => {
+        this.data = data;
+        this.isDataLoaded = true;
+        welcome.render(this.isDataLoaded);
+        selectTemplate(welcome.element);
+      }).
+      catch(Router.showError);
   }
 
   static showGame(game) {
     const gameScreen = new GamePresenter(new GameModel(game, this.data));
-    selectTemplate(gameScreen.element);
     gameScreen.startGame();
+    selectTemplate(gameScreen.element);
   }
 
-  static showStats(data) {
-    const stats = new StatsPresenter(new StatsModel(data));
-    stats.render();
-    selectTemplate(stats.element);
+  static showStats(game) {
+    Loader.loadResults().
+      then((data) => {
+        const stats = new StatsPresenter(new StatsModel(game, data));
+        stats.render();
+        selectTemplate(stats.element);
+      }).
+      catch(Router.showError);
   }
 
   static showFail(data) {
@@ -51,5 +60,10 @@ export default class Router {
     const confirm = new ConfirmPresenter(new ConfirmModel(game));
     confirm.render();
     selectTemplate(confirm.element);
+  }
+
+  static showError() {
+    const error = new ErrorView();
+    selectTemplate(error.element);
   }
 }

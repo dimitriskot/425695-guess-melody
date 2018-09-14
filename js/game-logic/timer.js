@@ -1,3 +1,5 @@
+import {SECOND_MS, GAME_TIME} from "../data/constants";
+
 export const subGameTime = (game, time) => {
   if (typeof time !== `number`) {
     throw new Error(`The time argument must be a number`);
@@ -46,3 +48,20 @@ export const clearLevelTime = (game) => {
   });
   return newGame;
 };
+
+export const getTimeStroke = (game) => {
+  const strokeLength = 2 * Math.PI * 370;
+  const timeItem = GAME_TIME / SECOND_MS;
+  const strokeItem = Math.ceil(strokeLength / timeItem);
+  const timeItemPassed = (GAME_TIME - game.time.total) / SECOND_MS;
+
+  const dasharray = Math.ceil(strokeLength);
+  const dashoffset = strokeItem * timeItemPassed;
+
+  const stroke = {
+    dasharray,
+    dashoffset,
+  };
+  return stroke;
+};
+

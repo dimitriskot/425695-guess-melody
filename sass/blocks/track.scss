@@ -25,6 +25,12 @@
   &--pause {
     background-position: -5px -294px;
   }
+
+  &--loading {
+    animation: spin 500ms infinite linear;
+    opacity: 0.8;
+    outline: none;
+  }
 }
 
 .track__status {
@@ -46,5 +52,11 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
   }
 }
