@@ -18,6 +18,8 @@ export default class GamePresenter {
     this.root.element.appendChild(this.content.element);
 
     this._interval = null;
+    this._isAudioPlaying = null;
+    this._audio = null;
   }
 
   get element() {
@@ -103,14 +105,41 @@ export default class GamePresenter {
     }
   }
 
-  toggleAudio(audio) {
+  toggleAudio(audio, button) {
     if (audio.classList.contains(`active`)) {
+      button.classList.remove(`track__button--loading`);
       audio.classList.remove(`active`);
-      audio.pause();
+      this.pauseAudio(audio, button);
     } else {
       audio.classList.add(`active`);
-      audio.play();
+      this.playAudio(audio, button);
     }
+  }
+
+  playAudio(audio, button) {
+    button.classList.add(`track__button--loading`);
+    this._audio = audio.play();
+    if (this._audio !== undefined) {
+      this._isAudioPlaying = false;
+      this._audio
+      .then(() => {
+        button.classList.remove(`track__button--loading`);
+        button.classList.add(`track__button--pause`);
+        this._isAudioPlaying = true;
+      })
+      .catch(() => {
+        this._audio = null;
+      });
+    }
+  }
+
+  pauseAudio(audio, button) {
+    if (!this._isAudioPlaying && this._audio !== null) {
+      this._audio = null;
+      return;
+    }
+    audio.pause();
+    button.classList.remove(`track__button--pause`);
   }
 
   togglePlayButton(button) {
@@ -125,16 +154,16 @@ export default class GamePresenter {
       buttons.forEach((button) => {
         if (button !== currentButton) {
           button.classList.remove(`track__button--pause`);
+          button.classList.remove(`track__button--loading`);
           const audio = button.nextElementSibling.querySelector(`audio`);
           audio.classList.remove(`active`);
-          audio.pause();
+          this.pauseAudio(audio, button);
         }
       });
     } else {
       currentAudio = currentButton.nextElementSibling;
     }
-    this.toggleAudio(currentAudio);
-    this.togglePlayButton(currentButton);
+    this.toggleAudio(currentAudio, currentButton);
   }
 
   onGameBackButtonClick() {

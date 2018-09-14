@@ -1,3 +1,4 @@
 import Router from "./router";
+import {currentGame} from "./data/initial-game";
 
-Router.start();
+Router.showWelcome(currentGame);

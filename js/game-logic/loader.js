@@ -1,9 +1,10 @@
 import {SERVER_URL, APP_ID} from "../data/constants";
-
+import Router from "../router";
 const checkStatus = (res) => {
   if (res.ok) {
     return res;
   } else {
+    Router.showError();
     throw new Error(`${res.status}: ${res.statusText}`);
   }
 };

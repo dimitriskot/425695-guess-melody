@@ -45,6 +45,18 @@
   }
 }
 
+.welcome__button--loading {
+  animation: spin 500ms infinite linear;
+  opacity: 0.8;
+  &:hover {
+    transform: none;
+  }
+
+  &:active {
+    transform: none;
+  }
+}
+
 .welcome__rules-title {
   @include italic-title;
 
@@ -61,4 +73,10 @@
 .welcome__rules-list {
   @include list-unstyled;
   text-align: center;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
 }
