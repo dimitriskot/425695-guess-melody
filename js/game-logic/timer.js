@@ -51,12 +51,12 @@ export const clearLevelTime = (game) => {
 
 export const getTimeStroke = (game) => {
   const strokeLength = 2 * Math.PI * 370;
-  const timeItem = GAME_TIME / SECOND_MS;
-  const strokeItem = Math.ceil(strokeLength / timeItem);
-  const timeItemPassed = (GAME_TIME - game.time.total) / SECOND_MS;
+  const timeStep = GAME_TIME / SECOND_MS;
+  const strokeStep = Math.ceil(strokeLength / timeStep);
+  const timeStepPassed = (GAME_TIME - game.time.total) / SECOND_MS;
 
   const dasharray = Math.ceil(strokeLength);
-  const dashoffset = strokeItem * timeItemPassed;
+  const dashoffset = strokeStep * timeStepPassed;
 
   const stroke = {
     dasharray,
