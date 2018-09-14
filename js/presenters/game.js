@@ -7,8 +7,9 @@ import GameArtistView from "../views/game/game-artist";
 export default class GamePresenter {
   constructor(model) {
     this.model = model;
+    this._timeStrokeData = this.getStroke();
     this.data = this.model.getCurrentLevelData();
-    this.header = new HeaderView(this.model.state);
+    this.header = new HeaderView(this.model.state, this._timeStrokeData);
     this.getLevelView();
     this.content = new this.LevelView(this.model, this.data);
 
@@ -69,7 +70,8 @@ export default class GamePresenter {
   }
 
   updateHeader() {
-    const header = new HeaderView(this.model.state);
+    this._timeStrokeData = this.getStroke();
+    const header = new HeaderView(this.model.state, this._timeStrokeData);
     this.root.element.replaceChild(header.element, this.header.element);
     this.header = header;
     this.header.onGameBackButtonClick = this.onGameBackButtonClick.bind(this);
@@ -189,6 +191,10 @@ export default class GamePresenter {
     } else {
       this.model.gameResults();
     }
+  }
+
+  getStroke() {
+    return this.model.stroke();
   }
 
 }

@@ -3,9 +3,10 @@ import {LIVES} from "../data/constants";
 import {getDom} from "../components/util";
 
 export default class HeaderView extends AbstractView {
-  constructor(game) {
+  constructor(game, stroke) {
     super();
     this.game = game;
+    this.stroke = stroke;
     this.timeMinutes = new Date(this.game.time.total).getMinutes();
     this.timeSeconds = new Date(this.game.time.total).getSeconds();
   }
@@ -18,7 +19,7 @@ export default class HeaderView extends AbstractView {
     </a>
 
     <svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
-      <circle class="timer__line" cx="390" cy="390" r="370"
+      <circle class="timer__line" cx="390" cy="390" r="370" stroke-dasharray="${this.stroke.dasharray}" stroke-dashoffset="${this.stroke.dashoffset}"
               style="filter: url(.#blur); transform: rotate(-90deg) scaleY(-1); transform-origin: center"/>
     </svg>
 

@@ -37,8 +37,8 @@ export default class Router {
 
   static showGame(game) {
     const gameScreen = new GamePresenter(new GameModel(game, this.data));
-    selectTemplate(gameScreen.element);
     gameScreen.startGame();
+    selectTemplate(gameScreen.element);
   }
 
   static showStats(game) {

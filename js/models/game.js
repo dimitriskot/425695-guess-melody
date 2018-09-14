@@ -4,7 +4,7 @@ import getLevelData from "../game-logic/level-data";
 import levelChange from "../game-logic/level-change";
 import getPlayerAnswer from "../game-logic/player-answer";
 import subPlayerLives from "../game-logic/player-lives";
-import {subGameTime, calcLevelTime, clearLevelTime} from "../game-logic/timer";
+import {subGameTime, calcLevelTime, clearLevelTime, getTimeStroke} from "../game-logic/timer";
 import getResults from "../game-logic/game-results";
 
 export default class GameModel {
@@ -72,5 +72,9 @@ export default class GameModel {
 
   getCurrentLevelData() {
     return getLevelData(this.data, this._state.level);
+  }
+
+  stroke() {
+    return getTimeStroke(this._state);
   }
 }
