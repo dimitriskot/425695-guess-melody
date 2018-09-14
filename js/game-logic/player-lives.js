@@ -1,4 +1,4 @@
-const subPlayerLives = (game) => {
+const substractPlayerLives = (game) => {
   if (typeof game.lives !== `number`) {
     throw new Error(`ERROR! Lives must be a number`);
   }
@@ -12,4 +12,4 @@ const subPlayerLives = (game) => {
   return newGame;
 };
 
-export default subPlayerLives;
+export default substractPlayerLives;

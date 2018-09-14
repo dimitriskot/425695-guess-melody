@@ -1,4 +1,4 @@
-import Router from "../router";
+import Router from "../../router";
 
 export default class WelcomeModel {
   constructor(game) {

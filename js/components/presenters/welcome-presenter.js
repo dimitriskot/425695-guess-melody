@@ -1,4 +1,4 @@
-import WelcomeView from "../views/welcome";
+import WelcomeView from "../views/welcome-view";
 
 export default class WelcomePresenter {
   constructor(model) {
@@ -18,10 +18,10 @@ export default class WelcomePresenter {
       startGameButton.classList.remove(`welcome__button--loading`);
     }
     startGameButton.disabled = !isDataLoaded;
-    this.welcome.onStartGameButtonClick = this.onStartGameButtonClick.bind(this);
+    this.welcome.onStartButtonClick = this.onStartButtonClick.bind(this);
   }
 
-  onStartGameButtonClick() {
+  onStartButtonClick() {
     this.model.start();
   }
 }

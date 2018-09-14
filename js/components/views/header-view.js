@@ -1,6 +1,6 @@
-import AbstractView from "./common/abstract";
-import {LIVES} from "../data/constants";
-import {getDom} from "../components/util";
+import AbstractView from "./common/abstract-view";
+import {LIVES} from "../../data/constants";
+import {getDom} from "../../util";
 
 export default class HeaderView extends AbstractView {
   constructor(game, stroke) {
@@ -50,12 +50,12 @@ export default class HeaderView extends AbstractView {
   }
 
   bind() {
-    const gameBackButton = this._element.querySelector(`.game__back`);
-    gameBackButton.addEventListener(`click`, (e) => {
+    const gamebackButton = this._element.querySelector(`.game__back`);
+    gamebackButton.addEventListener(`click`, (e) => {
       e.preventDefault();
-      this.onGameBackButtonClick();
+      this.onBackButtonClick();
     });
   }
 
-  onGameBackButtonClick() {}
+  onBackButtonClick() {}
 }

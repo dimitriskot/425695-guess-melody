@@ -1,6 +1,6 @@
-import AbstractView from "./common/abstract";
-import {CLASSES} from "../data/constants";
-import {getDom} from "../components/util";
+import AbstractView from "./common/abstract-view";
+import {classes} from "../../data/enums";
+import {getDom} from "../../util";
 
 export default class WelcomeView extends AbstractView {
   get template() {
@@ -25,15 +25,15 @@ export default class WelcomeView extends AbstractView {
   }
 
   render() {
-    return getDom(this.template, CLASSES.welcome);
+    return getDom(this.template, classes.WELCOME);
   }
 
   bind() {
-    const startGameButton = this._element.querySelector(`.welcome__button`);
-    startGameButton.addEventListener(`click`, () => {
-      this.onStartGameButtonClick();
+    const startButton = this._element.querySelector(`.welcome__button`);
+    startButton.addEventListener(`click`, () => {
+      this.onStartButtonClick();
     });
   }
 
-  onStartGameButtonClick() {}
+  onStartButtonClick() {}
 }

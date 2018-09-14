@@ -1,6 +1,6 @@
-import AbstractView from "../common/abstract";
-import {CLASSES} from "../../data/constants";
-import {getDom} from "../../components/util";
+import AbstractView from "../common/abstract-view";
+import {classes} from "../../../data/enums";
+import {getDom} from "../../../util";
 
 export default class GameView extends AbstractView {
   get template() {
@@ -17,11 +17,9 @@ export default class GameView extends AbstractView {
   }
 
   render() {
-    return getDom(this.template, CLASSES.game);
+    return getDom(this.template, classes.GAME);
   }
 
-  submitAnswer() {}
-  toggleAudio() {}
-  togglePlayButton() {}
+  onSubmitButtonClick() {}
   onPlayButtonClick() {}
 }

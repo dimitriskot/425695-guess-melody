@@ -1,14 +1,14 @@
-import {selectTemplate} from "./components/util";
-import WelcomeModel from "./models/welcome";
-import GameModel from "./models/game";
-import StatsModel from "./models/stats";
-import ConfirmModel from "./models/confirm";
-import WelcomePresenter from "./presenters/welcome";
-import GamePresenter from "./presenters/game";
-import StatsPresenter from "./presenters/stats";
-import ConfirmPresenter from "./presenters/confirm";
-import FailView from "./views/results/fail";
-import ErrorView from "./views/modals/error";
+import {selectTemplate} from "./util";
+import WelcomeModel from "./components/models/welcome-model";
+import GameModel from "./components/models/game-model";
+import StatsModel from "./components/models/stats-model";
+import ConfirmModel from "./components/models/confirm-model";
+import WelcomePresenter from "./components/presenters/welcome-presenter";
+import GamePresenter from "./components/presenters/game-presenter";
+import StatsPresenter from "./components/presenters/stats-presenter";
+import ConfirmPresenter from "./components/presenters/confirm-presenter";
+import FailView from "./components/views/results/fail-view";
+import ErrorView from "./components/views/modals/error-view";
 import Loader from "./game-logic/loader";
 
 export default class Router {
