@@ -1,5 +1,5 @@
 import AbstractView from "../common/abstract-view";
-import {className} from "../../../data/enums";
+import {ClassName} from "../../../data/enums";
 import {getDom} from "../../../util";
 
 export default class GameView extends AbstractView {
@@ -17,7 +17,7 @@ export default class GameView extends AbstractView {
   }
 
   render() {
-    return getDom(this.template, className.GAME);
+    return getDom(this.template, ClassName.GAME);
   }
 
   onSubmitButtonClick() {}

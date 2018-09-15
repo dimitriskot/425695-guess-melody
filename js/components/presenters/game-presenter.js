@@ -1,5 +1,5 @@
 import {SECOND_MS} from "../../data/constants";
-import {className, questionType} from "../../data/enums";
+import {ClassName, QuestionType} from "../../data/enums";
 import HeaderView from "../views/header-view";
 import GameView from "../views/game/game-view";
 import GameGenreView from "../views/game/game-genre-view";
@@ -18,7 +18,7 @@ export default class GamePresenter {
     this.content = new this.LevelView(this.model, this.data);
 
     this.root = new GameView();
-    this.root.element.classList.add(className[this.data.type.toLowerCase()]);
+    this.root.element.classList.add(ClassName[this.data.type.toLowerCase()]);
     this.root.element.appendChild(this.header.element);
     this.root.element.appendChild(this.content.element);
 
@@ -52,7 +52,7 @@ export default class GamePresenter {
 
 
   _isGenre(level) {
-    return level.type === questionType.GENRE;
+    return level.type === QuestionType.GENRE;
   }
 
   _getLevelView() {

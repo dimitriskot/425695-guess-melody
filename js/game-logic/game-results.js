@@ -1,15 +1,15 @@
 import Router from "../router";
-import {fail} from "../data/enums";
+import {Fail} from "../data/enums";
 import {getPlayerProgress} from "./player-progress";
 
 const getResults = (game) => {
   const playerProgress = getPlayerProgress(game);
   if (playerProgress.time.total <= 0) {
-    Router.showFail(fail.TIME);
+    Router.showFail(Fail.TIME);
     return;
   }
   if (playerProgress.lives === 0) {
-    Router.showFail(fail.TRIES);
+    Router.showFail(Fail.TRIES);
     return;
   }
   Router.showStats(game);

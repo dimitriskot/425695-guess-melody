@@ -1,5 +1,5 @@
 import GameView from "./game-view";
-import {debug} from "../../../data/enums";
+import {Debug} from "../../../data/enums";
 import {getDom} from "../../../util";
 
 export default class GameGenreView extends GameView {
@@ -18,7 +18,7 @@ export default class GameGenreView extends GameView {
           <div class="track__status">
           <audio src="${track.src}"></audio>
           </div>
-          <div class="game__answer" ${debug.STATE && track.genre === this.level.genre ? debug.STYLE : ``}>
+          <div class="game__answer" ${Debug.STATE && track.genre === this.level.genre ? Debug.STYLE : ``}>
           <input class="game__input visually-hidden" type="checkbox" name="answer" value="${track.genre}" id="${id}">
           <label class="game__check" for="${id}">Отметить</label>
           </div>
