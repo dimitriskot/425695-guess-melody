@@ -1,4 +1,4 @@
-import StatsView from "../views/results/stats";
+import StatsView from "../views/results/stats-view";
 
 export default class StatsPresenter {
   constructor(model) {
@@ -15,6 +15,6 @@ export default class StatsPresenter {
   }
 
   renderProgressText(data) {
-    return this.model.progress(data);
+    return this.model.renderProgressText(data);
   }
 }

@@ -1,4 +1,4 @@
-import {getDom} from "../../components/util";
+import {getDom} from "../../../util";
 
 export default class AbstractView {
   constructor() {

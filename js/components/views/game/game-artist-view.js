@@ -1,5 +1,6 @@
-import GameView from "./game";
-import {getDom} from "../../components/util";
+import GameView from "./game-view";
+import {debug} from "../../../data/enums";
+import {getDom} from "../../../util";
 
 export default class GameArtistView extends GameView {
   constructor(game, level) {
@@ -16,7 +17,7 @@ export default class GameArtistView extends GameView {
       <audio src="${this.level.src}"></audio>
       </div>
     <form class="game__artist">
-      ${this.level.answers.map((track, id) => `<div class="artist">
+      ${this.level.answers.map((track, id) => `<div class="artist" ${debug.STATE && track.isCorrect ? debug.STYLE : ``}>
         <input class="artist__input visually-hidden" type="radio" name="answer" value="${track.title}" id="${id}">
         <label class="artist__name" for="${id}">
           <img class="artist__picture" src="${track.image.url}" alt="${track.title}">
@@ -44,6 +45,6 @@ export default class GameArtistView extends GameView {
     const answers = this._element.querySelectorAll(`.artist__input`);
     const playButton = this._element.querySelector(`.track__button`);
     playButton.addEventListener(`click`, (e) => this.onPlayButtonClick(e));
-    [...answers].forEach((input) => input.addEventListener(`click`, (e) => this.submitAnswer(e)));
+    [...answers].forEach((submitButton) => submitButton.addEventListener(`click`, (e) => this.onSubmitButtonClick(e)));
   }
 }

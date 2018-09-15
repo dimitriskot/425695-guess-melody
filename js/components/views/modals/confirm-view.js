@@ -1,6 +1,6 @@
-import AbstractView from "../common/abstract";
-import {CLASSES} from "../../data/constants";
-import {getDom} from "../../components/util";
+import AbstractView from "../common/abstract-view";
+import {className} from "../../../data/enums";
+import {getDom} from "../../../util";
 
 export default class ConfirmView extends AbstractView {
   constructor(game) {
@@ -28,21 +28,21 @@ export default class ConfirmView extends AbstractView {
   }
 
   render() {
-    return getDom(this.template, CLASSES.modal);
+    return getDom(this.template, className.MODAL);
   }
 
   bind() {
     const closeButton = this._element.querySelector(`.modal__close`);
     closeButton.addEventListener(`click`, (e) => {
       e.preventDefault();
-      this.oncloseButtonClick();
+      this.onCloseButtonClick();
     });
     const modalButtons = this._element.querySelectorAll(`.modal__button`);
     modalButtons.forEach((button) => button.addEventListener(`click`, (e) => {
       e.preventDefault();
-      this.onModalButtonsClick(e);
+      this.onModalButtonClick(e);
     }));
   }
 
-  onModalButtonsClick() {}
+  onModalButtonClick() {}
 }

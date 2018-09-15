@@ -1,4 +1,4 @@
-import ConfirmView from "../views/modals/confirm";
+import ConfirmView from "../views/modals/confirm-view";
 
 export default class ConfirmPresenter {
   constructor(model) {
@@ -11,15 +11,15 @@ export default class ConfirmPresenter {
   }
 
   render() {
-    this.confirm.oncloseButtonClick = this.oncloseButtonClick.bind(this);
-    this.confirm.onModalButtonsClick = this.onModalButtonsClick.bind(this);
+    this.confirm.onCloseButtonClick = this.onCloseButtonClick.bind(this);
+    this.confirm.onModalButtonClick = this.onModalButtonClick.bind(this);
   }
 
-  onModalButtonsClick(e) {
+  onModalButtonClick(e) {
     this.model.confirmRestart(e);
   }
 
-  oncloseButtonClick() {
+  onCloseButtonClick() {
     this.model.confirmCancel();
   }
 }

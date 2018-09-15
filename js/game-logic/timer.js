@@ -1,6 +1,6 @@
 import {SECOND_MS, GAME_TIME} from "../data/constants";
 
-export const subGameTime = (game, time) => {
+export const substractGameTime = (game, time) => {
   if (typeof time !== `number`) {
     throw new Error(`The time argument must be a number`);
   }
@@ -19,7 +19,7 @@ export const subGameTime = (game, time) => {
   return newGame;
 };
 
-export const calcLevelTime = (game, time) => {
+export const calculateLevelTime = (game, time) => {
   if (typeof time !== `number`) {
     throw new Error(`The time argument must be a number`);
   }
@@ -49,7 +49,7 @@ export const clearLevelTime = (game) => {
   return newGame;
 };
 
-export const getTimeStroke = (game) => {
+export const getTimeStrokeData = (game) => {
   const strokeLength = 2 * Math.PI * 370;
   const timeStep = GAME_TIME / SECOND_MS;
   const strokeStep = Math.ceil(strokeLength / timeStep);

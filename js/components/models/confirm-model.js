@@ -1,4 +1,4 @@
-import {getConfirm, cancelRestart} from "../game-logic/restart";
+import {confirmRestart, cancelRestart} from "../../game-logic/restart";
 
 export default class ConfirmModel {
   constructor(game) {
@@ -15,7 +15,7 @@ export default class ConfirmModel {
   }
 
   confirmRestart(e) {
-    getConfirm(this._state, e);
+    confirmRestart(this._state, e);
   }
 
   confirmCancel() {

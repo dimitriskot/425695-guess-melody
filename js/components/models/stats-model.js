@@ -1,6 +1,6 @@
-import renderProgressText from "../game-logic/render-progress-text";
-import getPlayerResults from "../game-logic/player-results";
-import Loader from "../game-logic/loader";
+import renderProgressText from "../../game-logic/progress-text";
+import getPlayerResults from "../../game-logic/player-results";
+import Loader from "../../game-logic/loader";
 
 export default class StatsModel {
   constructor(game, stats) {
@@ -18,7 +18,7 @@ export default class StatsModel {
     Loader.saveResults(this._state.newGameStats);
   }
 
-  progress(data) {
+  renderProgressText(data) {
     return renderProgressText(data);
   }
 }

@@ -1,6 +1,6 @@
-import AbstractView from "../common/abstract";
-import {CLASSES} from "../../data/constants";
-import {getDom} from "../../components/util";
+import AbstractView from "../common/abstract-view";
+import {className} from "../../../data/enums";
+import {getDom} from "../../../util";
 
 export default class ErrorView extends AbstractView {
   get template() {
@@ -18,6 +18,6 @@ export default class ErrorView extends AbstractView {
   }
 
   render() {
-    return getDom(this.template, CLASSES.modal);
+    return getDom(this.template, className.MODAL);
   }
 }
