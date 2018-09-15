@@ -1,9 +1,9 @@
-export const grades = {
+export const grade = {
   USUAL: 1,
   BONUS: 2,
   FAIL: 2
 };
-export const classes = {
+export const className = {
   WELCOME: [`welcome`],
   GAME: [`game`],
   GENRE: [`game--genre`],
@@ -11,11 +11,11 @@ export const classes = {
   MODAL: [`modal`],
   RESULT: [`result`]
 };
-export const questionTypes = {
+export const questionType = {
   GENRE: `genre`,
   ARTIST: `artist`
 };
-export const fails = {
+export const fail = {
   TIME: {
     title: `Увы и ах!`,
     message: `Время вышло! Вы не успели отгадать все мелодии`
@@ -25,7 +25,7 @@ export const fails = {
     message: `У вас закончились все попытки. Ничего, повезёт в следующий раз!`
   }
 };
-export const confirms = {
+export const confirm = {
   OK: `Ок`,
   CANCEL: `Отмена`
 };

@@ -1,6 +1,6 @@
 import Router from "../../../router";
 import AbstractView from "../common/abstract-view";
-import {classes} from "../../../data/enums";
+import {className} from "../../../data/enums";
 import {currentGame} from "../../../data/initial-game";
 import {getDom} from "../../../util";
 
@@ -27,7 +27,7 @@ export default class FailView extends AbstractView {
   }
 
   render() {
-    return getDom(this.template, classes.RESULT);
+    return getDom(this.template, className.RESULT);
   }
 
   bind() {

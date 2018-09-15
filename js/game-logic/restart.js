@@ -1,13 +1,13 @@
 import Router from "../router";
-import {confirms} from "../data/enums";
+import {confirm} from "../data/enums";
 import {currentGame} from "../data/initial-game";
 
 export const confirmRestart = (game, e) => {
-  if (e.target.innerText === confirms.OK) {
+  if (e.target.innerText === confirm.OK) {
     Router.showGame(currentGame);
     return;
   }
-  if (e.target.innerText === confirms.CANCEL) {
+  if (e.target.innerText === confirm.CANCEL) {
     Router.showGame(game);
     return;
   }

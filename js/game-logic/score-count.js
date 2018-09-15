@@ -1,5 +1,5 @@
 import {LIVES, FAST_RIGHT_ANSWER_TIME} from "../data/constants";
-import {grades} from "../data/enums";
+import {grade} from "../data/enums";
 
 const getScoreCount = (game) => {
   let score = {
@@ -11,7 +11,7 @@ const getScoreCount = (game) => {
     .map((answer) => {
       let gradesForAnswer = 0;
       if (answer.isSuccess && answer.time >= FAST_RIGHT_ANSWER_TIME) {
-        gradesForAnswer = grades.USUAL;
+        gradesForAnswer = grade.USUAL;
       }
       return gradesForAnswer;
     })
@@ -20,13 +20,13 @@ const getScoreCount = (game) => {
     .map((answer) => {
       let gradesForAnswer = 0;
       if (answer.isSuccess && answer.time < FAST_RIGHT_ANSWER_TIME) {
-        gradesForAnswer = grades.BONUS;
+        gradesForAnswer = grade.BONUS;
       }
       return gradesForAnswer;
     })
     .reduce((a, b) => a + b);
     const fails = LIVES - game.lives;
-    const gradesForFails = fails * grades.FAIL;
+    const gradesForFails = fails * grade.FAIL;
     const total = gradesForAnswers + gradesForFastAnswers - gradesForFails;
     const fast = gradesForFastAnswers - gradesForFails;
     score = {

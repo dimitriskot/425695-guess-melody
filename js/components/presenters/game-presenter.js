@@ -1,5 +1,5 @@
 import {SECOND_MS} from "../../data/constants";
-import {classes, questionTypes} from "../../data/enums";
+import {className, questionType} from "../../data/enums";
 import HeaderView from "../views/header-view";
 import GameView from "../views/game/game-view";
 import GameGenreView from "../views/game/game-genre-view";
@@ -18,7 +18,7 @@ export default class GamePresenter {
     this.content = new this.LevelView(this.model, this.data);
 
     this.root = new GameView();
-    this.root.element.classList.add(classes[this.data.type.toLowerCase()]);
+    this.root.element.classList.add(className[this.data.type.toLowerCase()]);
     this.root.element.appendChild(this.header.element);
     this.root.element.appendChild(this.content.element);
 
@@ -52,7 +52,7 @@ export default class GamePresenter {
 
 
   _isGenre(level) {
-    return level.type === questionTypes.GENRE;
+    return level.type === questionType.GENRE;
   }
 
   _getLevelView() {
@@ -173,7 +173,7 @@ export default class GamePresenter {
   onSubmitButtonClick(e, answers) {
     let isSuccess;
     if (this._isGenre(this.data)) {
-      const userAnswers = [...answers].filter((answer) => answer.checked === true);
+      const userAnswers = [...answers].filter((answer) => answer.checked);
       const rightAnswers = this.data.answers.filter((answer) => answer.genre === this.data.genre);
       isSuccess = userAnswers.every((answer) => answer.value === this.data.genre) && userAnswers.length === rightAnswers.length;
     } else {

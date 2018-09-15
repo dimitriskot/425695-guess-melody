@@ -1,5 +1,5 @@
 import AbstractView from "../common/abstract-view";
-import {classes} from "../../../data/enums";
+import {className} from "../../../data/enums";
 import {getDom} from "../../../util";
 
 export default class ConfirmView extends AbstractView {
@@ -28,7 +28,7 @@ export default class ConfirmView extends AbstractView {
   }
 
   render() {
-    return getDom(this.template, classes.MODAL);
+    return getDom(this.template, className.MODAL);
   }
 
   bind() {

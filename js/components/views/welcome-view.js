@@ -1,5 +1,5 @@
 import AbstractView from "./common/abstract-view";
-import {classes} from "../../data/enums";
+import {className} from "../../data/enums";
 import {getDom} from "../../util";
 
 export default class WelcomeView extends AbstractView {
@@ -25,7 +25,7 @@ export default class WelcomeView extends AbstractView {
   }
 
   render() {
-    return getDom(this.template, classes.WELCOME);
+    return getDom(this.template, className.WELCOME);
   }
 
   bind() {
