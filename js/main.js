@@ -1,3 +1,4 @@
+import "@babel/polyfill";
 import Router from "./router";
 import {currentGame} from "./data/initial-game";
 
