@@ -5,8 +5,9 @@ export const getDom = (markUp, classNames = []) => {
   return domElement;
 };
 
+const mainElement = document.querySelector(`.main`);
+
 export const selectTemplate = (template) => {
-  const mainElement = document.querySelector(`.main`);
   mainElement.innerHTML = ``;
   mainElement.appendChild(template);
 };
